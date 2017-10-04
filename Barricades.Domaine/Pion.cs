@@ -1,12 +1,14 @@
 ﻿using Barricades.Domaine;
 using System.Collections.Generic;
 using Value;
+using static Barricades.Domaine.NomsDesCouleurs;
+using System;
 
 namespace Barricades.Domaine
 {
   public class Pion : ValueType<Pion>
   {
-    private Couleur _couleur;
+    private readonly Couleur _couleur;
     private Trou _trou;
 
     public Pion(Couleur couleur)
@@ -37,5 +39,12 @@ namespace Barricades.Domaine
       _couleur,
       _trou
     };
+
+    public override string ToString() => $"{NomDe(_couleur)}, {_trou}";
+
+    public void PoserSur(Trou trou)
+    {
+      _trou = trou;
+    }
   }
 }
