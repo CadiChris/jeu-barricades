@@ -17,18 +17,16 @@ namespace Barricades.Domaine.Tests
     {
       var plateau = new Plateau();
       var pion = new Pion(Couleur.Bleu);
-      pion.PoserSur(plateau, new Trou(new LigneDeTrous(0), 0));
-      AreEqual(pion,  plateau[new LigneDeTrous(0), 0].Pion);
+      pion.PoserSur(plateau, new Trou(new Ligne(0), 0));
+      AreEqual(pion,  plateau[new Ligne(0), 0].Pion);
     }
 
     [TestMethod]
     public void PeutPrevoirUnDeplacement()
     {
       var plateau = new Plateau();
-      var pion = new Pion(Couleur.Bleu);
-      pion.PoserSur(plateau, new Trou(new LigneDeTrous(0), 0));
-      var trajets = pion.TrajetsPour(1);
-      AreEqual(new Trou(new LigneDeTrous(0), 1), trajets[0].Trous[0]);
+      var trajets = plateau[new Ligne(1), 0].Pion.TrajetsPour(1);
+      AreEqual(new Trou(new Ligne(0), 1), trajets[0].Trous[0]);
     }
     
   }

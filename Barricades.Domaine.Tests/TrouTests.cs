@@ -15,8 +15,8 @@ namespace Barricades.Domaine.Tests
     [TestMethod]
     public void Egalite()
     {
-      AreEqual(new Trou(new LigneDeTrous(0), 0), new Trou(new LigneDeTrous(0), 0));
-      AreNotEqual(new Trou(new LigneDeTrous(0), 0), new Trou(new LigneDeTrous(0), 1));
+      AreEqual(new Trou(new Ligne(0), 0), new Trou(new Ligne(0), 0));
+      AreNotEqual(new Trou(new Ligne(0), 0), new Trou(new Ligne(0), 1));
     }
   }
 }

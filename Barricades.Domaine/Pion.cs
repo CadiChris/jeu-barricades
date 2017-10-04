@@ -28,7 +28,7 @@ namespace Barricades.Domaine
       {
         new Trajet(new List<Trou>
         {
-          new Trou(new LigneDeTrous(0), 1)
+          new Trou(new Ligne(0), 1)
         })
       };
     }

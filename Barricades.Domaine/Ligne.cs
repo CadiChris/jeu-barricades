@@ -3,12 +3,12 @@ using Value;
 
 namespace Barricades.Domaine
 {
-  public class LigneDeTrous : ValueType<LigneDeTrous>
+  public class Ligne : ValueType<Ligne>
   {
     public List<Trou> Trous { get; }
     public int X { get; private set; }
 
-    public LigneDeTrous(int x)
+    public Ligne(int x)
     {
       X = x;
       Trous = new List<Trou>();

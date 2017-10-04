@@ -5,10 +5,10 @@ namespace Barricades.Domaine
 {
   public class Trou : ValueType<Trou>
   {
-    public LigneDeTrous Ligne { get; }
+    public Ligne Ligne { get; }
     public int Y { get; }
 
-    public Trou(LigneDeTrous ligne, int y)
+    public Trou(Ligne ligne, int y)
     {
       Ligne = ligne;
       Y = y;
