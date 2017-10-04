@@ -6,9 +6,14 @@ namespace Barricades.Domaine
   {
     public List<Trou> Trous { get; private set; }
 
-    public Trajet(List<Trou> trous)
+    public Trajet()
     {
-      Trous = trous;
+      Trous = new List<Trou>();
+    }
+
+    public void Ajouter(Trou trou)
+    {
+      Trous.Add(trou);
     }
   }
 }

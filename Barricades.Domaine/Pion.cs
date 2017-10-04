@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Value;
 using static Barricades.Domaine.NomsDesCouleurs;
 using System;
+using System.Linq;
 
 namespace Barricades.Domaine
 {
@@ -24,13 +25,18 @@ namespace Barricades.Domaine
 
     public List<Trajet> TrajetsPour(int nombre)
     {
-      return new List<Trajet>
+      var trajets = new List<Trajet>();
+      foreach (var successeur in _trou.Successeurs)
       {
-        new Trajet(new List<Trou>
+        var trajet = new Trajet();
+        if (successeur.EstVide)
         {
-          new Trou(new Ligne(0), 1)
-        })
-      };
+          trajet.Ajouter(successeur);
+        }
+        trajets.Add(trajet);
+      }
+
+      return trajets;
     }
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
@@ -45,6 +51,12 @@ namespace Barricades.Domaine
     public void PoserSur(Trou trou)
     {
       _trou = trou;
+    }
+
+    public void Emprunter(Trajet trajet)
+    {
+      _trou.Vider();
+      trajet.Trous.Last().Poser(this);
     }
   }
 }

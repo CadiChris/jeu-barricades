@@ -18,6 +18,7 @@ namespace Barricades.Domaine
     {
       TrouerLePlateau();
       PoserLesPions();
+      DefinirLesPonts();
     }
 
     private void TrouerLePlateau()
@@ -61,7 +62,14 @@ namespace Barricades.Domaine
       PoserPion(new Pion(Rouge), this[new Ligne(1), 7]);
       PoserPion(new Pion(Barricade),this[new Ligne(3), 3] );
     }
-    
+
+    private void DefinirLesPonts()
+    {
+      var bleu1 = this[new Ligne(1), 0];
+      var trou_ligne1_2 = this[new Ligne(2), 1];
+      bleu1.AjouterSuccesseur(trou_ligne1_2);
+    }
+
     public void PoserPion(Pion pion, Trou trou)
     {
       this[trou.Ligne, trou.Y].Poser(pion);
