@@ -10,6 +10,7 @@ namespace Barricades.Domaine
       { Couleur.Vert, "Vert" },
       { Couleur.Jaune, "Jaune" },
       { Couleur.Rouge, "Rouge" },
+      { Couleur.Barricade, "Barricade" },
     };
 
     public static string NomDe(Couleur c) => Noms[c];

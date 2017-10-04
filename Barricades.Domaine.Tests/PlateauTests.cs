@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static System.Linq.Enumerable;
 using static Barricades.Domaine.Couleur;
 using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -27,6 +28,11 @@ namespace Barricades.Domaine.Tests
       AreEqual(Pion(Rouge, 0, 7), plateau[new LigneDeTrous(0), 7].Pion);
       AreEqual(Pion(Rouge, 1, 6), plateau[new LigneDeTrous(1), 6].Pion);
       AreEqual(Pion(Rouge, 1, 7), plateau[new LigneDeTrous(1), 7].Pion);
+
+      foreach (var y in Range(0, 9))
+        IsTrue(plateau[new LigneDeTrous(2), y].EstVide);
+
+      AreEqual(Pion(Barricade, 3, 3), plateau[new LigneDeTrous(3), 3].Pion);
     }
 
     private static Pion Pion(Couleur couleur, int x, int y)

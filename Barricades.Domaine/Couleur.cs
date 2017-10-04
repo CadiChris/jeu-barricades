@@ -5,6 +5,7 @@
     Bleu,
     Vert,
     Jaune,
-    Rouge
+    Rouge,
+    Barricade
   }
 }

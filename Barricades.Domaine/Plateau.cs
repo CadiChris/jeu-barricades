@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Linq.Enumerable;
 using static Barricades.Domaine.Couleur;
 
 namespace Barricades.Domaine
@@ -24,12 +25,20 @@ namespace Barricades.Domaine
       _lignes = new List<LigneDeTrous>();
 
       var depart1 = new LigneDeTrous(0);
-      depart1.TrouerEn(Enumerable.Range(0, 8).ToArray());
+      depart1.TrouerEn(Range(0, 8));
       _lignes.Add(depart1);
 
       var depart2 = new LigneDeTrous(1);
-      depart2.TrouerEn(Enumerable.Range(0, 8).ToArray());
+      depart2.TrouerEn(Range(0, 8));
       _lignes.Add(depart2);
+
+      var ligne1 = new LigneDeTrous(2);
+      ligne1.TrouerEn(Range(0, 9));
+      _lignes.Add(ligne1);
+
+      var ligne2 = new LigneDeTrous(3);
+      ligne2.TrouerEn(Range(0, 6));
+      _lignes.Add(ligne2);
     }
 
     private void PoserLesPions()
@@ -50,6 +59,7 @@ namespace Barricades.Domaine
       PoserPion(new Pion(Rouge), this[new LigneDeTrous(0), 7]);
       PoserPion(new Pion(Rouge), this[new LigneDeTrous(1), 6]);
       PoserPion(new Pion(Rouge), this[new LigneDeTrous(1), 7]);
+      PoserPion(new Pion(Barricade),this[new LigneDeTrous(3), 3] );
     }
     
     public void PoserPion(Pion pion, Trou trou)

@@ -15,6 +15,7 @@ namespace Barricades.Domaine
     }
 
     public Pion Pion { get; private set; }
+    public bool EstVide => Pion == null;
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {

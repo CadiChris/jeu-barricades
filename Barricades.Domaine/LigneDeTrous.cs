@@ -19,7 +19,7 @@ namespace Barricades.Domaine
       Trous.Add(new Trou(this, y));
     }
 
-    public void TrouerEn(params int[] ys)
+    public void TrouerEn(IEnumerable<int> ys)
     {
       foreach (var y in ys)
       {
