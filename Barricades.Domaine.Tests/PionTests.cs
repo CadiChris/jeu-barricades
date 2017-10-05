@@ -13,20 +13,12 @@ namespace Barricades.Domaine.Tests
   public class PionTests
   {
     [TestMethod]
-    public void PeutSePoser()
-    {
-      var plateau = new Plateau();
-      var pion = new Pion(Couleur.Bleu);
-      pion.PoserSur(plateau, new Trou(new Ligne(0), 0));
-      AreEqual(pion,  plateau[new Ligne(0), 0].Pion);
-    }
-
-    [TestMethod]
     public void PeutPrevoirUnDeplacementSimple()
     {
       var plateau = new Plateau();
+      var bleu = plateau[new Ligne(1), 0].Pion;
 
-      var trajets = plateau[new Ligne(1), 0].Pion.TrajetsPour(1);
+      var trajets = bleu.TrajetsPour(1);
 
       AreEqual(1, trajets.Count);
       AreEqual(1, trajets[0].Trous.Count);
@@ -37,12 +29,12 @@ namespace Barricades.Domaine.Tests
     public void PeutDeplacerUnPion()
     {
       var plateau = new Plateau();
-      var pion = plateau[new Ligne(1), 0].Pion;
-      var trajets = pion.TrajetsPour(1);
+      var bleu = plateau[new Ligne(1), 0].Pion;
+      var trajets = bleu.TrajetsPour(1);
 
-      pion.Emprunter(trajets[0]);
+      bleu.Emprunter(trajets[0]);
 
-      AreEqual(pion, plateau[new Ligne(2), 1].Pion);
+      AreEqual(bleu, plateau[new Ligne(2), 1].Pion);
       IsNull(plateau[new Ligne(1), 0].Pion);
     }
   }
