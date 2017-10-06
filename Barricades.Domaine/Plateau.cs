@@ -83,7 +83,8 @@ namespace Barricades.Domaine
     public void Deplacer(Pion pion, Trajet trajet)
     {
       this[trajet.Depart].Vider();
-      this[trajet.Arrivee].Poser(pion.Emprunter(trajet));
+      var pionADestination = pion.Emprunter(trajet);
+      this[trajet.Arrivee].Poser(pionADestination);
     }
   }
 }
