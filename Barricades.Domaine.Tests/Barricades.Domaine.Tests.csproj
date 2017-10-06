@@ -58,7 +58,6 @@
     <Compile Include="GpsTests.cs" />
     <Compile Include="PlateauTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrajetTests.cs" />
     <Compile Include="TrouTests.cs" />
   </ItemGroup>
   <ItemGroup>
