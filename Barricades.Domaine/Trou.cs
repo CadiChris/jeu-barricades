@@ -6,18 +6,22 @@ namespace Barricades.Domaine
   public class Trou : ValueType<Trou>
   {
     public Position Position { get; }
+    public List<Trou> Successeurs { get; }
+    public Pion Pion { get; }
+
     public int X => Position.X;
     public int Y => Position.Y;
-
-    public Pion Pion { get; private set; }
     public bool EstVide => Pion == null;
-
-    public List<Trou> Successeurs { get; }
     
-    public Trou(Position position)
+    public Trou(Position position): this(position, null, new List<Trou>())
+    {
+    }
+
+    private Trou(Position position, Pion pion, List<Trou> successeurs)
     {
       Position = position;
-      Successeurs = new List<Trou>();
+      Pion = pion;
+      Successeurs = successeurs;
     }
 
     public void AjouterSuccesseur(Trou trou)
@@ -38,14 +42,14 @@ namespace Barricades.Domaine
         yield return this;
     }
 
-    public void Poser(Pion pion)
+    public Trou Poser(Pion pion)
     {
-      Pion = pion;
+      return new Trou(Position, pion, Successeurs);
     }
 
-    public void Vider()
+    public Trou Vider()
     {
-      Pion = null;
+      return new Trou(Position, null, Successeurs);
     }
   }
 }

@@ -7,27 +7,27 @@ namespace Barricades.Domaine
 {
   public class Pion : ValueType<Pion>
   {
-    private readonly Couleur _couleur;
+    public Couleur Couleur { get; }
     public Position Position { get; }
 
     public Pion(Couleur couleur, Position position)
     {
-      _couleur = couleur;
+      Couleur = couleur;
       Position = position;
     }
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     => new List<object>
     {
-      _couleur,
+      Couleur,
       Position
     };
 
-    public override string ToString() => $"{NomDe(_couleur)}, {Position}";
+    public override string ToString() => $"{NomDe(Couleur)}, {Position}";
 
     public Pion Emprunter(Trajet trajet)
     {
-      return new Pion(_couleur, trajet.Arrivee);
+      return new Pion(Couleur, trajet.Arrivee);
     }
   }
 }
