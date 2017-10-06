@@ -10,9 +10,10 @@ namespace Barricades.Domaine
     public Position Depart => Etapes.First();
     public Position Arrivee => Etapes.Last();
 
-    public Trajet()
+    public Trajet(Position depart = null)
     {
       Etapes = new List<Position>();
+      if (depart != null) NouvelleEtape(depart);
     }
 
     public void NouvelleEtape(Position position)

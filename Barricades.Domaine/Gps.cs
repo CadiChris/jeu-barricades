@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Barricades.Domaine
 {
@@ -13,19 +14,21 @@ namespace Barricades.Domaine
 
     public IEnumerable<Trajet> TrajetsPour(int nombre)
     {
-      foreach (var successeur in _depart.Successeurs)
-      {
-        var trajet = new Trajet();
-        trajet.NouvelleEtape(_depart.Position);
+      var trajet = new Trajet(_depart.Position);
+      
+      var suivant = _depart.Successeurs[0];
 
-        while (nombre > 0)
-        {
-          if (!successeur.EstVide) break;
-          trajet.NouvelleEtape(successeur.Position);
-          nombre--;
-        }  
-        yield return trajet;
+      while (nombre > 0 && suivant.EstVide)
+      {
+        trajet.NouvelleEtape(suivant.Position);
+        nombre--;
+        if (suivant.Successeurs.Any())
+          suivant = suivant.Successeurs[0];
+        else
+          break;
       }
+      
+      yield return trajet;
     }
   }
 }

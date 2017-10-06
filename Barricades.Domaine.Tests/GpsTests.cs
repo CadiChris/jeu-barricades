@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -19,8 +20,15 @@ namespace Barricades.Domaine.Tests
       AreEqual(1, trajets.Count());
 
       var trajetUnique = trajets.First();
-      var nombreDeTrous = 4;
-      AreEqual(nombreDeTrous, trajetUnique.Etapes.Count);
+
+      CollectionAssert.AreEqual(
+        Positions(new[]{0,0}, new []{0,1}, new []{0,2}, new []{0,3}).ToList(),
+        trajetUnique.Etapes);
+    }
+
+    private IEnumerable<Position> Positions(params int[][] xys)
+    {
+      return xys.Select(xy => new Position(xy[0], xy[1]));
     }
   }
 }
