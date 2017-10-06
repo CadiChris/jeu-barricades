@@ -45,9 +45,9 @@ namespace Barricades.Domaine.Tests
       var position = new Position(1, 0);
       var trajets = plateau.TrajetsPour(position, 1);
 
-      AreEqual(1, trajets.Count);
-      AreEqual(2, trajets[0].Positions.Count);
-      AreEqual(new Position(2, 1), trajets[0].Arrivee);
+      AreEqual(1, trajets.Count());
+      AreEqual(2, trajets.First().Etapes.Count);
+      AreEqual(new Position(2, 1), trajets.First().Arrivee);
     }
 
     [TestMethod]
@@ -55,7 +55,7 @@ namespace Barricades.Domaine.Tests
     {
       var plateau = new Plateau();
       var departDuBleu = new Position(1, 0);
-      var trajetsUnique = plateau.TrajetsPour(departDuBleu, UN_COUP)[0];
+      var trajetsUnique = plateau.TrajetsPour(departDuBleu, UN_COUP).First();
 
       plateau.Deplacer(plateau.PionSur(departDuBleu), trajetsUnique);
 

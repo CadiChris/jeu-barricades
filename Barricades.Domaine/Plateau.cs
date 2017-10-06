@@ -81,7 +81,7 @@ namespace Barricades.Domaine
       this[position] = trouRempli;
     }
  
-    public List<Trajet> TrajetsPour(Position position, int nombre)
+    public IEnumerable<Trajet> TrajetsPour(Position position, int nombre)
     {
       var gps = new Gps(this[position]);
       return gps.TrajetsPour(nombre);

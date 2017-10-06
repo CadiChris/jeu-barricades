@@ -5,19 +5,40 @@ namespace Barricades.Domaine
 {
   public class Trajet
   {
-    public List<Position> Positions { get; }
+    public List<Position> Etapes { get; }
 
-    public Position Depart => Positions.First();
-    public Position Arrivee => Positions.Last();
+    public Position Depart => Etapes.First();
+    public Position Arrivee => Etapes.Last();
 
     public Trajet()
     {
-      Positions = new List<Position>();
+      Etapes = new List<Position>();
     }
 
-    public void Ajouter(Position position)
+    public void NouvelleEtape(Position position)
     {
-      Positions.Add(position);
+      Etapes.Add(position);
+    }
+
+    public Trajet ContinuerAvec(Trajet suite)
+    {
+      var trajetComplet = new Trajet();
+      foreach (var etape in Etapes)
+      {
+        trajetComplet.NouvelleEtape(etape);
+      }
+      foreach (var etape in suite.Etapes)
+      {
+        trajetComplet.NouvelleEtape(etape);
+      }
+      return trajetComplet;
+    }
+
+    public IEnumerable<Trajet> ContinuerAvec(params Trajet[] suites) => ContinuerAvec(suites.ToList());
+
+    public IEnumerable<Trajet> ContinuerAvec(IEnumerable<Trajet> suites)
+    {
+      return suites.Select(ContinuerAvec);
     }
   }
 }

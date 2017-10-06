@@ -11,22 +11,21 @@ namespace Barricades.Domaine
       _depart = depart;
     }
 
-    public List<Trajet> TrajetsPour(int nombre)
+    public IEnumerable<Trajet> TrajetsPour(int nombre)
     {
-      var trajets = new List<Trajet>();
-
       foreach (var successeur in _depart.Successeurs)
       {
         var trajet = new Trajet();
-        trajet.Ajouter(_depart.Position);
-        if (successeur.EstVide)
-        {
-          trajet.Ajouter(successeur.Position);
-        }
-        trajets.Add(trajet);
-      }
+        trajet.NouvelleEtape(_depart.Position);
 
-      return trajets;
+        while (nombre > 0)
+        {
+          if (!successeur.EstVide) break;
+          trajet.NouvelleEtape(successeur.Position);
+          nombre--;
+        }  
+        yield return trajet;
+      }
     }
   }
 }
