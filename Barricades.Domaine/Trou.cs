@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Value;
 
 namespace Barricades.Domaine
@@ -13,7 +14,7 @@ namespace Barricades.Domaine
     public int Y => Position.Y;
     public bool EstVide => Pion == null;
     
-    public Trou(Position position): this(position, null, new List<Trou>())
+    public Trou(Position position, params Trou[] successeurs): this(position, null, successeurs.ToList())
     {
     }
 
@@ -24,17 +25,12 @@ namespace Barricades.Domaine
       Successeurs = successeurs;
     }
 
-    public void AjouterSuccesseur(Trou trou)
-    {
-      Successeurs.Add(trou);
-    }
-
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
       return new List<object> { Position };
     }
 
-    public override string ToString() => $"[{Position}]";
+    public override string ToString() => $"{Position} > {Pion}";
 
     public IEnumerable<Trou> AccessiblesPour(int nombre)
     {

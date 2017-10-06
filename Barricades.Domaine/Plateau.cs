@@ -20,14 +20,33 @@ namespace Barricades.Domaine
     {
       TrouerLePlateau();
       PoserLesPions();
-      DefinirLesPonts();
     }
 
     private void TrouerLePlateau()
     {
       _trous = new Trou[8, 9];
 
-      foreach (var x in Range(0, 8))
+      _trous[2,1] = new Trou(new Position(2,1));
+      _trous[1, 0] = new Trou(new Position(1,0), _trous[2, 1]);
+      _trous[1, 1] = new Trou(new Position(1,1), _trous[2, 1]);
+
+      foreach (var y in Range(0, 9))
+      {
+        _trous[0, y] = new Trou(new Position(0, y));
+      }
+
+      foreach (var y in Range(2, 9-2))
+      {
+        _trous[1, y] = new Trou(new Position(1, y));
+      }
+
+      _trous[2,0] = new Trou(new Position(2,0));
+      foreach (var y in Range(2, 9-2))
+      {
+        _trous[2, y] = new Trou(new Position(2, y));
+      }
+
+      foreach (var x in Range(3, 8-3))
         foreach (var y in Range(0, 9))
         {
           _trous[x, y] = new Trou(new Position(x, y));
@@ -61,14 +80,7 @@ namespace Barricades.Domaine
       var trouRempli = this[position].Poser(pion);
       this[position] = trouRempli;
     }
-
-    private void DefinirLesPonts()
-    {
-      var bleu1 = this[new Position(1, 0)];
-      var trou_ligne1_2 = this[new Position(2, 1)];
-      bleu1.AjouterSuccesseur(trou_ligne1_2);
-    }
-
+ 
     public List<Trajet> TrajetsPour(Position position, int nombre)
     {
       var trajets = new List<Trajet>();
