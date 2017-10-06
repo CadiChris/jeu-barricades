@@ -83,19 +83,8 @@ namespace Barricades.Domaine
  
     public List<Trajet> TrajetsPour(Position position, int nombre)
     {
-      var trajets = new List<Trajet>();
-      foreach (var successeur in this[position].Successeurs)
-      {
-        var trajet = new Trajet();
-        trajet.Ajouter(position);
-        if (successeur.EstVide)
-        {
-          trajet.Ajouter(successeur.Position);
-        }
-        trajets.Add(trajet);
-      }
-
-      return trajets;
+      var gps = new Gps(this[position]);
+      return gps.TrajetsPour(nombre);
     }
 
     public void Deplacer(Pion pion, Trajet trajet)
