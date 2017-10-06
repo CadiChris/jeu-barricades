@@ -8,7 +8,6 @@ namespace Barricades.Domaine
   public class Plateau
   {
     private Trou[,] _trous;
-    private List<Pion> _pions;
     public Trou this[Position position] => _trous[position.X, position.Y];
     public Pion PionSur(Position position) => this[position].Pion;
 
@@ -32,8 +31,6 @@ namespace Barricades.Domaine
 
     private void PoserLesPions()
     {
-      _pions = new List<Pion>();
-
       Poser(Bleu, new Position(0, 0));
       Poser(Bleu, new Position(0, 1));
       Poser(Bleu, new Position(1, 0));
@@ -57,7 +54,6 @@ namespace Barricades.Domaine
     {
       var pion = new Pion(couleur, position);
       this[position].Poser(pion);
-      _pions.Add(pion);
     }
 
     private void DefinirLesPonts()
