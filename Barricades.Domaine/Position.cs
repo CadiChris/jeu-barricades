@@ -18,5 +18,7 @@ namespace Barricades.Domaine
     {
       X, Y
     };
+
+    public override string ToString() => $"[{X},{Y}]";
   }
 }

@@ -1,19 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Barricades.Domaine
 {
   public class Trajet
   {
-    public List<Trou> Trous { get; private set; }
+    public List<Position> Positions { get; }
+
+    public Position Depart => Positions.First();
+    public Position Arrivee => Positions.Last();
 
     public Trajet()
     {
-      Trous = new List<Trou>();
+      Positions = new List<Position>();
     }
 
-    public void Ajouter(Trou trou)
+    public void Ajouter(Position position)
     {
-      Trous.Add(trou);
+      Positions.Add(position);
     }
   }
 }

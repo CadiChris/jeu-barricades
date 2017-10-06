@@ -8,7 +8,9 @@ namespace Barricades.Domaine
   public class Plateau
   {
     private Trou[,] _trous;
+    private List<Pion> _pions;
     public Trou this[Position position] => _trous[position.X, position.Y];
+    public Pion PionSur(Position position) => this[position].Pion;
 
     public Plateau()
     {
@@ -19,34 +21,43 @@ namespace Barricades.Domaine
 
     private void TrouerLePlateau()
     {
-      _trous = new Trou[8,9];
+      _trous = new Trou[8, 9];
 
       foreach (var x in Range(0, 8))
-      foreach (var y in Range(0, 9))
-      {
-        _trous[x,y] = new Trou(new Position(x, y));
-      }
+        foreach (var y in Range(0, 9))
+        {
+          _trous[x, y] = new Trou(new Position(x, y));
+        }
     }
 
     private void PoserLesPions()
     {
-      PoserPion(new Pion(Bleu), this[new Position(0, 0)]);
-      PoserPion(new Pion(Bleu), this[new Position(0, 1)]);
-      PoserPion(new Pion(Bleu), this[new Position(1, 0)]);
-      PoserPion(new Pion(Bleu), this[new Position(1, 1)]);
-      PoserPion(new Pion(Vert), this[new Position(0, 2)]);
-      PoserPion(new Pion(Vert), this[new Position(0, 3)]);
-      PoserPion(new Pion(Vert), this[new Position(1, 2)]);
-      PoserPion(new Pion(Vert), this[new Position(1, 3)]);
-      PoserPion(new Pion(Jaune), this[new Position(0, 4)]);
-      PoserPion(new Pion(Jaune), this[new Position(0, 5)]);
-      PoserPion(new Pion(Jaune), this[new Position(1, 4)]);
-      PoserPion(new Pion(Jaune), this[new Position(1, 5)]);
-      PoserPion(new Pion(Rouge), this[new Position(0, 6)]);
-      PoserPion(new Pion(Rouge), this[new Position(0, 7)]);
-      PoserPion(new Pion(Rouge), this[new Position(1, 6)]);
-      PoserPion(new Pion(Rouge), this[new Position(1, 7)]);
-      PoserPion(new Pion(Barricade),this[new Position(3, 3)] );
+      _pions = new List<Pion>();
+
+      Poser(Bleu, new Position(0, 0));
+      Poser(Bleu, new Position(0, 1));
+      Poser(Bleu, new Position(1, 0));
+      Poser(Bleu, new Position(1, 1));
+      Poser(Vert, new Position(0, 2));
+      Poser(Vert, new Position(0, 3));
+      Poser(Vert, new Position(1, 2));
+      Poser(Vert, new Position(1, 3));
+      Poser(Jaune, new Position(0, 4));
+      Poser(Jaune, new Position(0, 5));
+      Poser(Jaune, new Position(1, 4));
+      Poser(Jaune, new Position(1, 5));
+      Poser(Rouge, new Position(0, 6));
+      Poser(Rouge, new Position(0, 7));
+      Poser(Rouge, new Position(1, 6));
+      Poser(Rouge, new Position(1, 7));
+      Poser(Barricade, new Position(3, 3));
+    }
+
+    private void Poser(Couleur couleur, Position position)
+    {
+      var pion = new Pion(couleur, position);
+      this[position].Poser(pion);
+      _pions.Add(pion);
     }
 
     private void DefinirLesPonts()
@@ -56,10 +67,27 @@ namespace Barricades.Domaine
       bleu1.AjouterSuccesseur(trou_ligne1_2);
     }
 
-    public void PoserPion(Pion pion, Trou trou)
+    public List<Trajet> TrajetsPour(Position position, int nombre)
     {
-      pion.PoserSur(trou);
-      this[new Position(trou.X, trou.Y)].Poser(pion);
+      var trajets = new List<Trajet>();
+      foreach (var successeur in this[position].Successeurs)
+      {
+        var trajet = new Trajet();
+        trajet.Ajouter(position);
+        if (successeur.EstVide)
+        {
+          trajet.Ajouter(successeur.Position);
+        }
+        trajets.Add(trajet);
+      }
+
+      return trajets;
+    }
+
+    public void Deplacer(Pion pion, Trajet trajet)
+    {
+      this[trajet.Depart].Vider();
+      this[trajet.Arrivee].Poser(pion.Emprunter(trajet));
     }
   }
 }

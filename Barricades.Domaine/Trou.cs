@@ -5,10 +5,13 @@ namespace Barricades.Domaine
 {
   public class Trou : ValueType<Trou>
   {
+    public Position Position { get; }
     public int X => Position.X;
     public int Y => Position.Y;
+
     public Pion Pion { get; private set; }
     public bool EstVide => Pion == null;
+
     public List<Trou> Successeurs { get; }
     
     public Trou(Position position)
@@ -16,8 +19,6 @@ namespace Barricades.Domaine
       Position = position;
       Successeurs = new List<Trou>();
     }
-
-    public Position Position { get; private set; }
 
     public void AjouterSuccesseur(Trou trou)
     {
@@ -29,17 +30,17 @@ namespace Barricades.Domaine
       return new List<object> { Position };
     }
 
-    public void Poser(Pion pion)
-    {
-      Pion = pion;
-    }
-
     public override string ToString() => $"[{Position}]";
 
     public IEnumerable<Trou> AccessiblesPour(int nombre)
     {
       if (nombre == 1)
-      yield return this;
+        yield return this;
+    }
+
+    public void Poser(Pion pion)
+    {
+      Pion = pion;
     }
 
     public void Vider()
