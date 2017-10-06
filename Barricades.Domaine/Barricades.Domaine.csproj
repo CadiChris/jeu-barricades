@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Couleur.cs" />
-    <Compile Include="Ligne.cs" />
     <Compile Include="NomsDesCouleurs.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Trajet.cs" />
     <Compile Include="Trou.cs" />
     <Compile Include="Pion.cs" />

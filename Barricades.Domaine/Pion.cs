@@ -1,8 +1,6 @@
-﻿using Barricades.Domaine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Value;
 using static Barricades.Domaine.NomsDesCouleurs;
-using System;
 using System.Linq;
 
 namespace Barricades.Domaine

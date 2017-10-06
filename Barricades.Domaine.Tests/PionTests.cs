@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Barricades.Domaine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Barricades.Domaine.Tests
@@ -16,26 +10,26 @@ namespace Barricades.Domaine.Tests
     public void PeutPrevoirUnDeplacementSimple()
     {
       var plateau = new Plateau();
-      var bleu = plateau[new Ligne(1), 0].Pion;
+      var bleu = plateau[new Position(1, 0)].Pion;
 
       var trajets = bleu.TrajetsPour(1);
 
       AreEqual(1, trajets.Count);
       AreEqual(1, trajets[0].Trous.Count);
-      AreEqual(new Trou(new Ligne(2), 1), trajets[0].Trous[0]);
+      AreEqual(new Trou(new Position(2, 1)), trajets[0].Trous[0]);
     }
 
     [TestMethod]
     public void PeutDeplacerUnPion()
     {
       var plateau = new Plateau();
-      var bleu = plateau[new Ligne(1), 0].Pion;
+      var bleu = plateau[new Position(1, 0)].Pion;
       var trajets = bleu.TrajetsPour(1);
 
       bleu.Emprunter(trajets[0]);
 
-      AreEqual(bleu, plateau[new Ligne(2), 1].Pion);
-      IsNull(plateau[new Ligne(1), 0].Pion);
+      AreEqual(bleu, plateau[new Position(2, 1)].Pion);
+      IsNull(plateau[new Position(1, 0)].Pion);
     }
   }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Linq.Enumerable;
 using static Barricades.Domaine.Couleur;
 
@@ -11,8 +7,8 @@ namespace Barricades.Domaine
 {
   public class Plateau
   {
-    private List<Ligne> _lignes;
-    public Trou this[Ligne ligne, int y] => _lignes[ligne.X].Trous[y];
+    private Trou[,] _trous;
+    public Trou this[Position position] => _trous[position.X, position.Y];
 
     public Plateau()
     {
@@ -23,57 +19,47 @@ namespace Barricades.Domaine
 
     private void TrouerLePlateau()
     {
-      _lignes = new List<Ligne>();
+      _trous = new Trou[8,9];
 
-      var depart1 = new Ligne(0);
-      depart1.TrouerEn(Range(0, 8));
-      _lignes.Add(depart1);
-
-      var depart2 = new Ligne(1);
-      depart2.TrouerEn(Range(0, 8));
-      _lignes.Add(depart2);
-
-      var ligne1 = new Ligne(2);
-      ligne1.TrouerEn(Range(0, 9));
-      _lignes.Add(ligne1);
-
-      var ligne2 = new Ligne(3);
-      ligne2.TrouerEn(Range(0, 6));
-      _lignes.Add(ligne2);
+      foreach (var x in Range(0, 8))
+      foreach (var y in Range(0, 9))
+      {
+        _trous[x,y] = new Trou(new Position(x, y));
+      }
     }
 
     private void PoserLesPions()
     {
-      PoserPion(new Pion(Bleu), this[new Ligne(0), 0]);
-      PoserPion(new Pion(Bleu), this[new Ligne(0), 1]);
-      PoserPion(new Pion(Bleu), this[new Ligne(1), 0]);
-      PoserPion(new Pion(Bleu), this[new Ligne(1), 1]);
-      PoserPion(new Pion(Vert), this[new Ligne(0), 2]);
-      PoserPion(new Pion(Vert), this[new Ligne(0), 3]);
-      PoserPion(new Pion(Vert), this[new Ligne(1), 2]);
-      PoserPion(new Pion(Vert), this[new Ligne(1), 3]);
-      PoserPion(new Pion(Jaune), this[new Ligne(0), 4]);
-      PoserPion(new Pion(Jaune), this[new Ligne(0), 5]);
-      PoserPion(new Pion(Jaune), this[new Ligne(1), 4]);
-      PoserPion(new Pion(Jaune), this[new Ligne(1), 5]);
-      PoserPion(new Pion(Rouge), this[new Ligne(0), 6]);
-      PoserPion(new Pion(Rouge), this[new Ligne(0), 7]);
-      PoserPion(new Pion(Rouge), this[new Ligne(1), 6]);
-      PoserPion(new Pion(Rouge), this[new Ligne(1), 7]);
-      PoserPion(new Pion(Barricade),this[new Ligne(3), 3] );
+      PoserPion(new Pion(Bleu), this[new Position(0, 0)]);
+      PoserPion(new Pion(Bleu), this[new Position(0, 1)]);
+      PoserPion(new Pion(Bleu), this[new Position(1, 0)]);
+      PoserPion(new Pion(Bleu), this[new Position(1, 1)]);
+      PoserPion(new Pion(Vert), this[new Position(0, 2)]);
+      PoserPion(new Pion(Vert), this[new Position(0, 3)]);
+      PoserPion(new Pion(Vert), this[new Position(1, 2)]);
+      PoserPion(new Pion(Vert), this[new Position(1, 3)]);
+      PoserPion(new Pion(Jaune), this[new Position(0, 4)]);
+      PoserPion(new Pion(Jaune), this[new Position(0, 5)]);
+      PoserPion(new Pion(Jaune), this[new Position(1, 4)]);
+      PoserPion(new Pion(Jaune), this[new Position(1, 5)]);
+      PoserPion(new Pion(Rouge), this[new Position(0, 6)]);
+      PoserPion(new Pion(Rouge), this[new Position(0, 7)]);
+      PoserPion(new Pion(Rouge), this[new Position(1, 6)]);
+      PoserPion(new Pion(Rouge), this[new Position(1, 7)]);
+      PoserPion(new Pion(Barricade),this[new Position(3, 3)] );
     }
 
     private void DefinirLesPonts()
     {
-      var bleu1 = this[new Ligne(1), 0];
-      var trou_ligne1_2 = this[new Ligne(2), 1];
+      var bleu1 = this[new Position(1, 0)];
+      var trou_ligne1_2 = this[new Position(2, 1)];
       bleu1.AjouterSuccesseur(trou_ligne1_2);
     }
 
     public void PoserPion(Pion pion, Trou trou)
     {
-      this[trou.Ligne, trou.Y].Poser(pion);
       pion.PoserSur(trou);
+      this[new Position(trou.X, trou.Y)].Poser(pion);
     }
   }
 }

@@ -5,18 +5,19 @@ namespace Barricades.Domaine
 {
   public class Trou : ValueType<Trou>
   {
-    public Ligne Ligne { get; }
-    public int Y { get; }
+    public int X => Position.X;
+    public int Y => Position.Y;
     public Pion Pion { get; private set; }
     public bool EstVide => Pion == null;
     public List<Trou> Successeurs { get; }
-
-    public Trou(Ligne ligne, int y)
+    
+    public Trou(Position position)
     {
-      Ligne = ligne;
-      Y = y;
+      Position = position;
       Successeurs = new List<Trou>();
     }
+
+    public Position Position { get; private set; }
 
     public void AjouterSuccesseur(Trou trou)
     {
@@ -25,7 +26,7 @@ namespace Barricades.Domaine
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
-      return new List<object> { Ligne, Y };
+      return new List<object> { Position };
     }
 
     public void Poser(Pion pion)
@@ -33,7 +34,7 @@ namespace Barricades.Domaine
       Pion = pion;
     }
 
-    public override string ToString() => $"[{Ligne}, Trou {Y}]";
+    public override string ToString() => $"[{Position}]";
 
     public IEnumerable<Trou> AccessiblesPour(int nombre)
     {
