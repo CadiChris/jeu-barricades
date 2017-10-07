@@ -12,19 +12,24 @@ namespace Barricades.Domaine.Tests
     [TestMethod]
     public void VaToutDroit()
     {
-      var arrivee = new Trou(P("0, 2"), new Trou(P("0, 3")));
-      var milieu = new Trou(P("0, 1"), arrivee);
-      var depart = new Trou(P("0, 0"), milieu);
+      var gps = new Gps(4.TrousQuiSeSuivent(ligne: 0));
+      var trajets = gps.TrajetsPour(3).ToList();
 
-      var gps = new Gps(depart);
-      var trajets = gps.TrajetsPour(3);
-      AreEqual(1, trajets.Count());
-
-      var trajetUnique = trajets.First();
-
+      AreEqual(1, trajets.Count);
       CollectionAssert.AreEqual(
-        new List<Position> {P("0,0"), P("0,1"), P("0,2"), P("0,3")},
-        trajetUnique.Etapes);
+        new List<Position> { P("0,0"), P("0,1"), P("0,2"), P("0,3") },
+        trajets.First().Etapes);
+    }
+  }
+
+  public static class TrouExtensions
+  {
+    public static Trou TrousQuiSeSuivent(this int combien, int ligne, int colonne = 0)
+    {
+      var position = P($"{ligne},{colonne}");
+
+      var finDuParcours = combien - 1 == 0;
+      return finDuParcours ? new Trou(position) : new Trou(position, (combien - 1).TrousQuiSeSuivent(ligne, colonne+1));
     }
   }
 }
