@@ -12,19 +12,19 @@ namespace Barricades.Domaine
       _depart = depart;
     }
 
-    public IEnumerable<Trajet> TrajetsPour(int nombre)
+    public IEnumerable<Trajet> TrajetsPour(int deplacements)
     {
       foreach (var successeur in _depart.Successeurs)
       {
-        var nombrePourCeTrajet = nombre;
+        var deplacementsRestants = deplacements;
         var trajet = new Trajet(_depart.Position);
 
         var suivant = successeur;
 
-        while (nombrePourCeTrajet > 0 && suivant.EstVide)
+        while (deplacementsRestants > 0 && suivant.EstVide)
         {
           trajet.NouvelleEtape(suivant.Position);
-          nombrePourCeTrajet--;
+          deplacementsRestants--;
           if (suivant.Successeurs.Any())
             suivant = suivant.Successeurs[0];
           else
