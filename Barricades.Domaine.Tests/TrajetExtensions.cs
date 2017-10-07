@@ -9,7 +9,7 @@ namespace Barricades.Domaine.Tests
     {
       CollectionAssert.AreEqual(
         positions.ToList(),
-        trajet.Etapes,
+        trajet.Etapes.ToList(),
         $"Trajet qui fail l'assertion : {trajet}. ");
     }
   }

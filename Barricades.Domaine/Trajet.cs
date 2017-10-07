@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using static System.String;
 
@@ -6,34 +7,31 @@ namespace Barricades.Domaine
 {
   public class Trajet
   {
-    public List<Position> Etapes { get; }
+    public ReadOnlyCollection<Position> Etapes { get; }
 
     public Position Depart => Etapes.First();
     public Position Arrivee => Etapes.Last();
 
-    public Trajet(Position depart = null)
+    public Trajet(Position depart) : this(new [] { depart })
     {
-      Etapes = new List<Position>();
-      if (depart != null) NouvelleEtape(depart);
     }
 
-    public void NouvelleEtape(Position position)
+    public Trajet(params Position[] etapes)
     {
-      Etapes.Add(position);
+      Etapes = new ReadOnlyCollection<Position>(etapes);
+    }
+    
+    public Trajet NouvelleEtape(Position position)
+    {
+      var avecNouvellePosition = new List<Position>(Etapes) {position};
+      return new Trajet(avecNouvellePosition.ToArray());
     }
 
     public Trajet ContinuerAvec(Trajet suite)
     {
-      var trajetComplet = new Trajet();
-      foreach (var etape in Etapes)
-      {
-        trajetComplet.NouvelleEtape(etape);
-      }
-      foreach (var etape in suite.Etapes)
-      {
-        trajetComplet.NouvelleEtape(etape);
-      }
-      return trajetComplet;
+      var toutesLesEtapes = new List<Position>(Etapes);
+      toutesLesEtapes.AddRange(suite.Etapes);
+      return new Trajet(toutesLesEtapes.ToArray());
     }
 
     public override string ToString() => Join("->", Etapes.Select(e => $"{e}"));
