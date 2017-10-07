@@ -32,12 +32,6 @@ namespace Barricades.Domaine
 
     public override string ToString() => $"{Position} > {Pion}";
 
-    public IEnumerable<Trou> AccessiblesPour(int nombre)
-    {
-      if (nombre == 1)
-        yield return this;
-    }
-
     public Trou Poser(Pion pion)
     {
       return new Trou(Position, pion, Successeurs);
