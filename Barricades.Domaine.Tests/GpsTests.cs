@@ -20,21 +20,19 @@ namespace Barricades.Domaine.Tests
     }
 
     [TestMethod]
-    public void ProposeUneFourchette()
+    public void ProposePlusieursTrajetsEnCasDEmbranchements()
     {
       var _3_1 = new Trou(P("3,1"));
       var _2_3 = new Trou(P("2,3"));
       var _2_2 = new Trou(P("2,2"), _2_3, _3_1);
+      var _2_1 = new Trou(P("2,1"), _2_2);
 
-      var gps = new Gps(_2_2);
-      var trajets = gps.TrajetsPour(1).ToList();
-
+      var gps = new Gps(_2_1);
+      var trajets = gps.TrajetsPour(2).ToList();
       AreEqual(2, trajets.Count);
-      var trajetVers_2_3 = trajets[0];
-      trajetVers_2_3.AssertLaComposition(P("2,2"), P("2,3"));
 
-      var trajetVers_3_1 = trajets[1];
-      trajetVers_3_1.AssertLaComposition(P("2,2"), P("3,1"));
+      trajets[0].AssertLaComposition(P("2,1"), P("2,2"), P("2,3"));
+      trajets[1].AssertLaComposition(P("2,1"), P("2,2"), P("3,1"));
     }
   }
 }
