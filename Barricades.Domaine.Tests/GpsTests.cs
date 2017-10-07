@@ -20,6 +20,29 @@ namespace Barricades.Domaine.Tests
         new List<Position> { P("0,0"), P("0,1"), P("0,2"), P("0,3") },
         trajets.First().Etapes);
     }
+
+    [TestMethod]
+    public void ProposeUneFourchette()
+    {
+      var _3_1 = new Trou(P("3,1"));
+      var _2_3 = new Trou(P("2,3"));
+      var _2_2 = new Trou(P("2,2"), _2_3, _3_1);
+
+      var gps = new Gps(_2_2);
+      var trajets = gps.TrajetsPour(1).ToList();
+
+      AreEqual(2, trajets.Count);
+      var trajetVers_2_3 = trajets[0];
+      CollectionAssert.AreEqual(
+        new List<Position> {P("2,2"), P("2,3")},
+        trajetVers_2_3.Etapes);
+
+      var trajetVers_3_1 = trajets[1];
+      CollectionAssert.AreEqual(
+        new List<Position> { P("2,2"), P("3,1")},
+        trajetVers_3_1.Etapes,
+        $"{trajetVers_3_1}");
+    }
   }
 
   public static class TrouExtensions

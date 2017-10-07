@@ -14,21 +14,25 @@ namespace Barricades.Domaine
 
     public IEnumerable<Trajet> TrajetsPour(int nombre)
     {
-      var trajet = new Trajet(_depart.Position);
-      
-      var suivant = _depart.Successeurs[0];
-
-      while (nombre > 0 && suivant.EstVide)
+      foreach (var successeur in _depart.Successeurs)
       {
-        trajet.NouvelleEtape(suivant.Position);
-        nombre--;
-        if (suivant.Successeurs.Any())
-          suivant = suivant.Successeurs[0];
-        else
-          break;
+        var nombrePourCeTrajet = nombre;
+        var trajet = new Trajet(_depart.Position);
+
+        var suivant = successeur;
+
+        while (nombrePourCeTrajet > 0 && suivant.EstVide)
+        {
+          trajet.NouvelleEtape(suivant.Position);
+          nombrePourCeTrajet--;
+          if (suivant.Successeurs.Any())
+            suivant = suivant.Successeurs[0];
+          else
+            break;
+        }
+
+        yield return trajet; 
       }
-      
-      yield return trajet;
     }
   }
 }

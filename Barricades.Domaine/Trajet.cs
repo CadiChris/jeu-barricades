@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using static System.String;
 
 namespace Barricades.Domaine
 {
@@ -20,5 +21,7 @@ namespace Barricades.Domaine
     {
       Etapes.Add(position);
     }
+
+    public override string ToString() => Join("->", Etapes.Select(e => $"{e}"));
   }
 }
