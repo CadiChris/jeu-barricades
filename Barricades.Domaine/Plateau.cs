@@ -2,6 +2,7 @@
 using System.Linq;
 using static System.Linq.Enumerable;
 using static Barricades.Domaine.Couleur;
+using static Barricades.Domaine.Position;
 
 namespace Barricades.Domaine
 {
@@ -26,50 +27,50 @@ namespace Barricades.Domaine
     {
       _trous = new Trou[10, 9];
 
-      _trous[2,1] = new Trou(new Position(2,1));
-      _trous[1, 0] = new Trou(new Position(1,0), _trous[2, 1]);
-      _trous[1, 1] = new Trou(new Position(1,1), _trous[2, 1]);
+      _trous[2,1] = new Trou(P("2,1"));
+      _trous[1, 0] = new Trou(P("1,0"), _trous[2, 1]);
+      _trous[1, 1] = new Trou(P("1,1"), _trous[2, 1]);
 
       foreach (var y in Range(0, 9))
-        _trous[0, y] = new Trou(new Position(0, y));
+        _trous[0, y] = new Trou(P($"0, {y}"));
 
       foreach (var y in Range(2, 9-2))
-        _trous[1, y] = new Trou(new Position(1, y));
+        _trous[1, y] = new Trou(P($"1, {y}"));
 
-      _trous[2,0] = new Trou(new Position(2,0));
+      _trous[2,0] = new Trou(P("2,0"));
       foreach (var y in Range(2, 9-2))
-        _trous[2, y] = new Trou(new Position(2, y));
+        _trous[2, y] = new Trou(P($"2, {y}"));
 
       foreach (var x in Range(3, 10-3))
         foreach (var y in Range(0, 9))
-          _trous[x, y] = new Trou(new Position(x, y));
+          _trous[x, y] = new Trou(P($"{x},{y}"));
     }
 
     private void PoserLesPions()
     {
-      Poser(Bleu, new Position(0, 0));
-      Poser(Bleu, new Position(0, 1));
-      Poser(Bleu, new Position(1, 0));
-      Poser(Bleu, new Position(1, 1));
-      Poser(Vert, new Position(0, 2));
-      Poser(Vert, new Position(0, 3));
-      Poser(Vert, new Position(1, 2));
-      Poser(Vert, new Position(1, 3));
-      Poser(Jaune, new Position(0, 4));
-      Poser(Jaune, new Position(0, 5));
-      Poser(Jaune, new Position(1, 4));
-      Poser(Jaune, new Position(1, 5));
-      Poser(Rouge, new Position(0, 6));
-      Poser(Rouge, new Position(0, 7));
-      Poser(Rouge, new Position(1, 6));
-      Poser(Rouge, new Position(1, 7));
-      Poser(Barricade, new Position(3, 3));
-      Poser(Barricade, new Position(4, 2));
-      Poser(Barricade, new Position(4, 5));
-      Poser(Barricade, new Position(5, 2));
-      Poser(Barricade, new Position(7, 3));
-      Poser(Barricade, new Position(7, 4));
-      Poser(Barricade, new Position(8, 4));
+      Poser(Bleu, P("0, 0"));
+      Poser(Bleu, P("0, 1"));
+      Poser(Bleu, P("1, 0"));
+      Poser(Bleu, P("1, 1"));
+      Poser(Vert, P("0, 2"));
+      Poser(Vert, P("0, 3"));
+      Poser(Vert, P("1, 2"));
+      Poser(Vert, P("1, 3"));
+      Poser(Jaune, P("0, 4"));
+      Poser(Jaune, P("0, 5"));
+      Poser(Jaune, P("1, 4"));
+      Poser(Jaune, P("1, 5"));
+      Poser(Rouge, P("0, 6"));
+      Poser(Rouge, P("0, 7"));
+      Poser(Rouge, P("1, 6"));
+      Poser(Rouge, P("1, 7"));
+      Poser(Barricade, P("3, 3"));
+      Poser(Barricade, P("4, 2"));
+      Poser(Barricade, P("4, 5"));
+      Poser(Barricade, P("5, 2"));
+      Poser(Barricade, P("7, 3"));
+      Poser(Barricade, P("7, 4"));
+      Poser(Barricade, P("8, 4"));
     }
 
     private void Poser(Couleur couleur, Position position)

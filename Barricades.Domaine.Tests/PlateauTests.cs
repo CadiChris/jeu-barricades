@@ -11,7 +11,6 @@ namespace Barricades.Domaine.Tests
   public class PlateauTests
   {
     private const int UN_COUP = 1;
-    private static Pion Pion(Couleur couleur, int x, int y) => new Pion(couleur, new Position(x, y));
 
     [TestMethod]
     public void MetLePlateauEnPlace()
@@ -39,24 +38,24 @@ namespace Barricades.Domaine.Tests
     public void PeutPrevoirUnDeplacementSimple()
     {
       var plateau = new Plateau();
-      var position = new Position(1, 0);
+      var position = P("1,0");
       var trajets = plateau.TrajetsPour(position, 1);
 
       AreEqual(1, trajets.Count());
       AreEqual(2, trajets.First().Etapes.Count);
-      AreEqual(new Position(2, 1), trajets.First().Arrivee);
+      AreEqual(P("2,1"), trajets.First().Arrivee);
     }
 
     [TestMethod]
     public void PeutDeplacerUnPion()
     {
       var plateau = new Plateau();
-      var departDuBleu = new Position(1, 0);
+      var departDuBleu = P("1,0");
       var trajetsUnique = plateau.TrajetsPour(departDuBleu, UN_COUP).First();
 
       plateau.Deplacer(plateau.PionSur(departDuBleu), trajetsUnique);
 
-      AreEqual(Pion(Bleu, 2, 1), plateau.PionSur(new Position(2, 1)));
+      AreEqual(new Pion(Bleu, P("2,1")), plateau.PionSur(P("2,1")));
       IsNull(plateau[departDuBleu].Pion);
     }
   }

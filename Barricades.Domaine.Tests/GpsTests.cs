@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Barricades.Domaine.Position;
 using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Barricades.Domaine.Tests
@@ -11,9 +12,9 @@ namespace Barricades.Domaine.Tests
     [TestMethod]
     public void VaToutDroit()
     {
-      var arrivee = new Trou(new Position(0, 2), new Trou(new Position(0, 3)));
-      var milieu = new Trou(new Position(0, 1), arrivee);
-      var depart = new Trou(new Position(0, 0), milieu);
+      var arrivee = new Trou(P("0, 2"), new Trou(P("0, 3")));
+      var milieu = new Trou(P("0, 1"), arrivee);
+      var depart = new Trou(P("0, 0"), milieu);
 
       var gps = new Gps(depart);
       var trajets = gps.TrajetsPour(3);
@@ -22,13 +23,8 @@ namespace Barricades.Domaine.Tests
       var trajetUnique = trajets.First();
 
       CollectionAssert.AreEqual(
-        Positions(new[]{0,0}, new []{0,1}, new []{0,2}, new []{0,3}).ToList(),
+        new List<Position> {P("0,0"), P("0,1"), P("0,2"), P("0,3")},
         trajetUnique.Etapes);
-    }
-
-    private IEnumerable<Position> Positions(params int[][] xys)
-    {
-      return xys.Select(xy => new Position(xy[0], xy[1]));
     }
   }
 }
