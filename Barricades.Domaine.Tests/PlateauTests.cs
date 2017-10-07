@@ -12,29 +12,28 @@ namespace Barricades.Domaine.Tests
     private const int UN_COUP = 1;
     private static Pion Pion(Couleur couleur, int x, int y) => new Pion(couleur, new Position(x, y));
 
-    public int[] P(string coordonnees)
+    public Position P(string coordonnees)
     {
       coordonnees = coordonnees.Replace(" ", "");
-      return new[] {Parse(coordonnees.Split(',')[0]), Parse(coordonnees.Split(',')[1])};
+      return new Position(Parse(coordonnees.Split(',')[0]), Parse(coordonnees.Split(',')[1]));
     }
 
     [TestMethod]
     public void MetLePlateauEnPlace()
     {
       var plateau = new Plateau();
-      // Bleu
       plateau.AssertPions(Bleu, P("0,0"), P("0,1"), P("1,0"), P("1,1"));
-      // Vert
       plateau.AssertPions(Vert, P("0,2"), P("0,3"), P("1,2"), P("1,3"));
-      // Jaune
       plateau.AssertPions(Jaune, P("0,4"), P("0,5"), P("1,4"), P("1,5"));
-      // Rouge
       plateau.AssertPions(Rouge, P("0,6"), P("0,7"), P("1,6"),P("1,7"));
 
+      // Ligne 2
       foreach (var y in Range(0, 9))
-        IsTrue(plateau[new Position(2, y)].EstVide);
+        plateau.AssertTrouVide(P($"2,{y}"));
 
-      AreEqual(Pion(Barricade, 3, 3), plateau[new Position(3, 3)].Pion);
+      // Ligne 3
+      plateau.AssertTrouVide(P("3,0"), P("3,1"), P("3,2"), P("3,4"), P("3,5"), P("3,6"));
+      plateau.AssertPions(Barricade, P("3,3"));
     }
 
     [TestMethod]
@@ -65,12 +64,20 @@ namespace Barricades.Domaine.Tests
 
   public static class PlateauTestsExtensions
   {
-    public static void AssertPions(this Plateau plateau, Couleur couleurAttendue, params int[] [] positions)
+    public static void AssertPions(this Plateau plateau, Couleur couleurAttendue, params Position [] positions)
     {
       foreach (var position in positions)
       {
-        var pionAttendu = new Pion(couleurAttendue, new Position(position[0], position[1]));
-        AreEqual(pionAttendu, plateau.PionSur(new Position(position[0], position[1])));
+        var pionAttendu = new Pion(couleurAttendue, position);
+        AreEqual(pionAttendu, plateau.PionSur(position));
+      }
+    }
+
+    public static void AssertTrouVide(this Plateau plateau, params Position [] positions)
+    {
+      foreach (var position in positions)
+      {
+        IsTrue(plateau[position].EstVide);
       }
     }
   }
