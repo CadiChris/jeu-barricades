@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static System.Int32;
 using static System.Linq.Enumerable;
 using static Barricades.Domaine.Couleur;
 using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
@@ -11,30 +12,24 @@ namespace Barricades.Domaine.Tests
     private const int UN_COUP = 1;
     private static Pion Pion(Couleur couleur, int x, int y) => new Pion(couleur, new Position(x, y));
 
+    public int[] P(string coordonnees)
+    {
+      coordonnees = coordonnees.Replace(" ", "");
+      return new[] {Parse(coordonnees.Split(',')[0]), Parse(coordonnees.Split(',')[1])};
+    }
+
     [TestMethod]
     public void MetLePlateauEnPlace()
     {
       var plateau = new Plateau();
       // Bleu
-      plateau.AssertPion(Bleu, 0, 0);
-      plateau.AssertPion(Bleu, 0, 1);
-      plateau.AssertPion(Bleu, 1, 0);
-      plateau.AssertPion(Bleu, 1, 1);
+      plateau.AssertPions(Bleu, P("0,0"), P("0,1"), P("1,0"), P("1,1"));
       // Vert
-      plateau.AssertPion(Vert, 0, 2);
-      plateau.AssertPion(Vert, 0, 3);
-      plateau.AssertPion(Vert, 1, 2);
-      plateau.AssertPion(Vert, 1, 3);
+      plateau.AssertPions(Vert, P("0,2"), P("0,3"), P("1,2"), P("1,3"));
       // Jaune
-      plateau.AssertPion(Jaune, 0, 4);
-      plateau.AssertPion(Jaune, 0, 5);
-      plateau.AssertPion(Jaune, 1, 4);
-      plateau.AssertPion(Jaune, 1, 5);
+      plateau.AssertPions(Jaune, P("0,4"), P("0,5"), P("1,4"), P("1,5"));
       // Rouge
-      plateau.AssertPion(Rouge, 0, 6);
-      plateau.AssertPion(Rouge, 0, 7);
-      plateau.AssertPion(Rouge, 1, 6);
-      plateau.AssertPion(Rouge, 1, 7);
+      plateau.AssertPions(Rouge, P("0,6"), P("0,7"), P("1,6"),P("1,7"));
 
       foreach (var y in Range(0, 9))
         IsTrue(plateau[new Position(2, y)].EstVide);
@@ -70,10 +65,13 @@ namespace Barricades.Domaine.Tests
 
   public static class PlateauTestsExtensions
   {
-    public static void AssertPion(this Plateau plateau, Couleur couleurAttendue, int x, int y)
+    public static void AssertPions(this Plateau plateau, Couleur couleurAttendue, params int[] [] positions)
     {
-      var pionAttendu = new Pion(couleurAttendue, new Position(x, y));
-      AreEqual(pionAttendu, plateau.PionSur(new Position(x, y)));
+      foreach (var position in positions)
+      {
+        var pionAttendu = new Pion(couleurAttendue, new Position(position[0], position[1]));
+        AreEqual(pionAttendu, plateau.PionSur(new Position(position[0], position[1])));
+      }
     }
   }
 }
