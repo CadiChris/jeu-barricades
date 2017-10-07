@@ -17,18 +17,15 @@ namespace Barricades.Domaine
       var arrivee = deplacements == 0;
       if (arrivee) yield return new Trajet(_depart.Position);
 
-      else
-        foreach (var successeur in _depart.Successeurs)
-        {
-          var trajet = new Trajet(_depart.Position);
-          if (successeur.EstVide)
-            foreach (var continuation in new Gps(successeur).TrajetsPour(deplacements - 1))
-              yield return trajet.ContinuerAvec(continuation);
-          else
-          {
-            yield return deplacements == 1 ? trajet.QuiPrend() : trajet.Bloquer();
-          }
-        }
+      foreach (var successeur in _depart.Successeurs)
+      {
+        var trajet = new Trajet(_depart.Position);
+        if (successeur.EstVide)
+          foreach (var continuation in new Gps(successeur).TrajetsPour(deplacements - 1))
+            yield return trajet.ContinuerAvec(continuation);
+        else
+          yield return deplacements == 1 ? trajet.QuiPrend(successeur.Pion) : trajet.Bloquer();
+      }
     }
   }
 }

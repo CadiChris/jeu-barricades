@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using static System.String;
@@ -12,23 +13,24 @@ namespace Barricades.Domaine
     public Position Depart => Etapes.First();
     public Position Arrivee => Etapes.Last();
     public bool EstBloque { get; }
-    public bool PrendUnPion { get; }
+    public bool PrendUnPion => Prise != null;
+    public Pion Prise { get; }
 
-    public Trajet(Position depart) : this(false, false, new [] { depart })
+    public Trajet(Position depart) : this(false, null, new [] { depart })
     {
     }
 
-    public Trajet(bool estBloque, bool prendUnPion, params Position[] etapes)
+    public Trajet(bool estBloque, Pion prise, params Position[] etapes)
     {
       EstBloque = estBloque;
-      PrendUnPion = prendUnPion;
+      Prise = prise;
       Etapes = new ReadOnlyCollection<Position>(etapes);
     }
     
     public Trajet NouvelleEtape(Position position)
     {
       var avecNouvellePosition = new List<Position>(Etapes) {position};
-      return new Trajet(EstBloque, PrendUnPion, avecNouvellePosition.ToArray());
+      return new Trajet(EstBloque, Prise, avecNouvellePosition.ToArray());
     }
 
     public Trajet ContinuerAvec(Trajet suite)
@@ -37,7 +39,7 @@ namespace Barricades.Domaine
       toutesLesEtapes.AddRange(suite.Etapes);
       return new Trajet(
         EstBloque | suite.EstBloque,
-        PrendUnPion | suite.PrendUnPion,
+        suite.Prise,
         toutesLesEtapes.ToArray());
     }
 
@@ -45,12 +47,12 @@ namespace Barricades.Domaine
 
     public Trajet Bloquer()
     {
-      return new Trajet(true, PrendUnPion, Etapes.ToArray());
+      return new Trajet(true, Prise, Etapes.ToArray());
     }
-   
-    public Trajet QuiPrend()
+
+    internal Trajet QuiPrend(Pion prise)
     {
-      return new Trajet(EstBloque, true, Etapes.ToArray());
+      return new Trajet(EstBloque, prise, Etapes.ToArray());
     }
   }
 }

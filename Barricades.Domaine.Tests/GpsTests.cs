@@ -61,7 +61,8 @@ namespace Barricades.Domaine.Tests
 
       var gps = new Gps(depart);
       var trajets = gps.TrajetsPour(2).ToList();
-      IsTrue(trajets.Single().PrendUnPion);
+
+      AreEqual(new Pion(Bleu, P("0,2")),  trajets.Single().Prise);
     }
   }
 }
