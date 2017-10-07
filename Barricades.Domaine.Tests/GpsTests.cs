@@ -52,7 +52,9 @@ namespace Barricades.Domaine.Tests
       var position = P($"{ligne},{colonne}");
 
       var finDuParcours = combien - 1 == 0;
-      return finDuParcours ? new Trou(position) : new Trou(position, (combien - 1).TrousQuiSeSuivent(ligne, colonne+1));
+      return finDuParcours 
+        ? new Trou(position)
+        : new Trou(position, (combien - 1).TrousQuiSeSuivent(ligne, colonne+1));
     }
   }
 }

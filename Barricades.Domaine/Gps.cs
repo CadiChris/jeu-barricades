@@ -14,24 +14,15 @@ namespace Barricades.Domaine
 
     public IEnumerable<Trajet> TrajetsPour(int deplacements)
     {
+      if (deplacements == 0) yield return new Trajet(_depart.Position);
+
       foreach (var successeur in _depart.Successeurs)
       {
-        var deplacementsRestants = deplacements;
         var trajet = new Trajet(_depart.Position);
-
-        var suivant = successeur;
-
-        while (deplacementsRestants > 0 && suivant.EstVide)
+        foreach (var continuation in new Gps(successeur).TrajetsPour(deplacements - 1))
         {
-          trajet.NouvelleEtape(suivant.Position);
-          deplacementsRestants--;
-          if (suivant.Successeurs.Any())
-            suivant = suivant.Successeurs[0];
-          else
-            break;
+          yield return trajet.ContinuerAvec(continuation);
         }
-
-        yield return trajet; 
       }
     }
   }
