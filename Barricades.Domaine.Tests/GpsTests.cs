@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Barricades.Domaine.Couleur;
 using static Barricades.Domaine.Position;
@@ -37,7 +36,7 @@ namespace Barricades.Domaine.Tests
     }
 
     [TestMethod]
-    public void DetecteUnTrajetBloque()
+    public void DetecteUnBlocage()
     {
       var depart = 4.TrousQuiSeSuivent(0);
       var _0_1 = depart.Successeurs[0];
@@ -49,8 +48,20 @@ namespace Barricades.Domaine.Tests
 
       AreEqual(1, trajets.Count);
       AreEqual(2, trajets.Single().Etapes.Count);
-      AreEqual(true, trajets.Single().EstBloque);
+      IsTrue(trajets.Single().EstBloque);
     }
 
+    [TestMethod]
+    public void DetecteUnePriseDePion()
+    {
+      var depart = 4.TrousQuiSeSuivent(0);
+      var _0_1 = depart.Successeurs[0];
+      var _0_2 = _0_1.Successeurs[0];
+      _0_1.Successeurs[0] = _0_2.Poser(new Pion(Bleu, P("0,2")));
+
+      var gps = new Gps(depart);
+      var trajets = gps.TrajetsPour(2).ToList();
+      IsTrue(trajets.Single().PrendUnPion);
+    }
   }
 }
