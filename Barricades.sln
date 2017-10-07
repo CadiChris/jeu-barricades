@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barricades.Domaine", "Barri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barricades.Domaine.Tests", "Barricades.Domaine.Tests\Barricades.Domaine.Tests.csproj", "{76FC0237-4881-4710-8E5F-A72073D9380A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3D428E90-1E3A-4F7B-99DF-3DB4F5755234}"
+	ProjectSection(SolutionItems) = preProject
+		Barricades.png = Barricades.png
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
