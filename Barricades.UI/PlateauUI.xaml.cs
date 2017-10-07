@@ -4,7 +4,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Windows.Threading;
 using Barricades.Domaine;
+using static System.Windows.Application;
 using static Barricades.Domaine.Position;
 
 namespace Barricades.UI
@@ -18,7 +21,7 @@ namespace Barricades.UI
       InitializeComponent();
 
       Plateau = new Plateau();
-      DessinerLePlateau();
+      Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(DessinerLePlateau));
     }
 
     private void DessinerLePlateau()
@@ -39,6 +42,22 @@ namespace Barricades.UI
       {
         ui.Content = "<__>";
         ui.Foreground = Couleurs[trou.Pion.Couleur];
+      }
+      foreach (var successeur in trou.Successeurs)
+      {
+        var successeurUi = FindName($"_{successeur.Position.X}{successeur.Position.Y}") as Button;
+        var positionDuSuccesseur = successeurUi.TransformToAncestor(this).Transform(new Point(0, 0));
+        var maPosition = ui.TransformToAncestor(this).Transform(new Point(0, 0));
+        var chemin = new Line()
+        {
+          Stroke = Brushes.Black,
+          StrokeThickness = 3,
+          X1 = positionDuSuccesseur.X + successeurUi.ActualWidth / 2,
+          Y1 = positionDuSuccesseur.Y + successeurUi.ActualHeight / 2,
+          X2 = maPosition.X + ui.ActualWidth / 2,
+          Y2 = maPosition.Y + ui.ActualHeight / 2
+        };
+        _canvas.Children.Add(chemin);
       }
     }
 
