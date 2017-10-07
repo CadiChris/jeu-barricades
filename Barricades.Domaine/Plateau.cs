@@ -24,33 +24,25 @@ namespace Barricades.Domaine
 
     private void TrouerLePlateau()
     {
-      _trous = new Trou[8, 9];
+      _trous = new Trou[10, 9];
 
       _trous[2,1] = new Trou(new Position(2,1));
       _trous[1, 0] = new Trou(new Position(1,0), _trous[2, 1]);
       _trous[1, 1] = new Trou(new Position(1,1), _trous[2, 1]);
 
       foreach (var y in Range(0, 9))
-      {
         _trous[0, y] = new Trou(new Position(0, y));
-      }
 
       foreach (var y in Range(2, 9-2))
-      {
         _trous[1, y] = new Trou(new Position(1, y));
-      }
 
       _trous[2,0] = new Trou(new Position(2,0));
       foreach (var y in Range(2, 9-2))
-      {
         _trous[2, y] = new Trou(new Position(2, y));
-      }
 
-      foreach (var x in Range(3, 8-3))
+      foreach (var x in Range(3, 10-3))
         foreach (var y in Range(0, 9))
-        {
           _trous[x, y] = new Trou(new Position(x, y));
-        }
     }
 
     private void PoserLesPions()
@@ -72,6 +64,12 @@ namespace Barricades.Domaine
       Poser(Rouge, new Position(1, 6));
       Poser(Rouge, new Position(1, 7));
       Poser(Barricade, new Position(3, 3));
+      Poser(Barricade, new Position(4, 2));
+      Poser(Barricade, new Position(4, 5));
+      Poser(Barricade, new Position(5, 2));
+      Poser(Barricade, new Position(7, 3));
+      Poser(Barricade, new Position(7, 4));
+      Poser(Barricade, new Position(8, 4));
     }
 
     private void Poser(Couleur couleur, Position position)

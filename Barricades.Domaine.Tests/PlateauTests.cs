@@ -29,6 +29,10 @@ namespace Barricades.Domaine.Tests
       // Ligne 3
       plateau.AssertTrouVide(P("3,0"), P("3,1"), P("3,2"), P("3,4"), P("3,5"), P("3,6"));
       plateau.AssertPions(Barricade, P("3,3"));
+
+      // Barricades. On test seulement les barricades.
+      // Arrivé ici on est confiant que les autres trous sont vides.
+      plateau.AssertPions(Barricade, P("4,2"), P("4,5"), P("5,2"), P("7,3"), P("7,4"), P("8,4"));
     }
 
     [TestMethod]
