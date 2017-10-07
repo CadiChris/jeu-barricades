@@ -11,29 +11,36 @@ namespace Barricades.Domaine
 
     public Position Depart => Etapes.First();
     public Position Arrivee => Etapes.Last();
+    public bool EstBloque { get; }
 
-    public Trajet(Position depart) : this(new [] { depart })
+    public Trajet(Position depart) : this(false, new [] { depart })
     {
     }
 
-    public Trajet(params Position[] etapes)
+    public Trajet(bool estBloque, params Position[] etapes)
     {
+      EstBloque = estBloque;
       Etapes = new ReadOnlyCollection<Position>(etapes);
     }
     
     public Trajet NouvelleEtape(Position position)
     {
       var avecNouvellePosition = new List<Position>(Etapes) {position};
-      return new Trajet(avecNouvellePosition.ToArray());
+      return new Trajet(EstBloque, avecNouvellePosition.ToArray());
     }
 
     public Trajet ContinuerAvec(Trajet suite)
     {
       var toutesLesEtapes = new List<Position>(Etapes);
       toutesLesEtapes.AddRange(suite.Etapes);
-      return new Trajet(toutesLesEtapes.ToArray());
+      return new Trajet(EstBloque | suite.EstBloque, toutesLesEtapes.ToArray());
     }
 
     public override string ToString() => Join("->", Etapes.Select(e => $"{e}"));
+
+    public Trajet Bloquer()
+    {
+      return new Trajet(true, Etapes.ToArray());
+    }
   }
 }

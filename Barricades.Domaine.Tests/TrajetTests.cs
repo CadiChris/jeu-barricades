@@ -10,7 +10,7 @@ namespace Barricades.Domaine.Tests
     [TestMethod]
     public void PeutContinuerAvecUnAutreTrajet()
     {
-      var trajetA = new Trajet(P("0,0"), P("0,1"));
+      var trajetA = new Trajet(false, P("0,0"), P("0,1"));
       var trajetB = new Trajet(P("0,2"));
 
       var trajetComplet = trajetA.ContinuerAvec(trajetB);

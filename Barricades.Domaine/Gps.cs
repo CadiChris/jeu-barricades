@@ -19,10 +19,10 @@ namespace Barricades.Domaine
       foreach (var successeur in _depart.Successeurs)
       {
         var trajet = new Trajet(_depart.Position);
+        if (!successeur.EstVide) yield return trajet.Bloquer();
+
         foreach (var continuation in new Gps(successeur).TrajetsPour(deplacements - 1))
-        {
-          yield return trajet.ContinuerAvec(continuation);
-        }
+            yield return trajet.ContinuerAvec(continuation);
       }
     }
   }
