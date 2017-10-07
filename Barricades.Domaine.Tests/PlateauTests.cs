@@ -2,6 +2,7 @@
 using static System.Int32;
 using static System.Linq.Enumerable;
 using static Barricades.Domaine.Couleur;
+using static Barricades.Domaine.Position;
 using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Barricades.Domaine.Tests
@@ -11,12 +12,6 @@ namespace Barricades.Domaine.Tests
   {
     private const int UN_COUP = 1;
     private static Pion Pion(Couleur couleur, int x, int y) => new Pion(couleur, new Position(x, y));
-
-    public Position P(string coordonnees)
-    {
-      coordonnees = coordonnees.Replace(" ", "");
-      return new Position(Parse(coordonnees.Split(',')[0]), Parse(coordonnees.Split(',')[1]));
-    }
 
     [TestMethod]
     public void MetLePlateauEnPlace()
@@ -76,9 +71,7 @@ namespace Barricades.Domaine.Tests
     public static void AssertTrouVide(this Plateau plateau, params Position [] positions)
     {
       foreach (var position in positions)
-      {
-        IsTrue(plateau[position].EstVide);
-      }
+        IsTrue(plateau[position].EstVide, $"{position} n'est pas vide");
     }
   }
 }

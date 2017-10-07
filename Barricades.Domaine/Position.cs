@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Value;
+using static System.Int32;
 
 namespace Barricades.Domaine
 {
@@ -20,5 +21,11 @@ namespace Barricades.Domaine
     };
 
     public override string ToString() => $"[{X},{Y}]";
+
+    public static Position P(string coordonnees)
+    {
+      coordonnees = coordonnees.Replace(" ", "");
+      return new Position(Parse(coordonnees.Split(',')[0]), Parse(coordonnees.Split(',')[1]));
+    }
   }
 }
