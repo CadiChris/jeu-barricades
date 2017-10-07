@@ -4,89 +4,99 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             Width="900" Height="900">
+             Width="900" Height="1000">
   <UserControl.Resources>
     <ImageBrush x:Key="ImageTrou" ImageSource="Images/Trou.png"></ImageBrush>
   </UserControl.Resources>
   <Canvas Name="_canvas">
     <DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
+        <Button Width="100" Name="_90"></Button>
+        <Button Width="100" Name="_91"></Button>
+        <Button Width="100" Name="_92"></Button>
+        <Button Width="100" Name="_93"></Button>
+        <Button Width="100" Name="_94"></Button>
+        <Button Width="100" Name="_95"></Button>
+        <Button Width="100" Name="_96"></Button>
+        <Button Width="100" Name="_97"></Button>
+        <Button Width="100" Name="_98"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
+        <Button Width="100" Name="_80"></Button>
+        <Button Width="100" Name="_81"></Button>
+        <Button Width="100" Name="_82"></Button>
+        <Button Width="100" Name="_83"></Button>
+        <Button Width="100" Name="_84"></Button>
+        <Button Width="100" Name="_85"></Button>
+        <Button Width="100" Name="_86"></Button>
+        <Button Width="100" Name="_87"></Button>
+        <Button Width="100" Name="_88"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-      </DockPanel>
-
-      <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
+        <Button Width="100" Name="_70"></Button>
+        <Button Width="100" Name="_71"></Button>
+        <Button Width="100" Name="_72"></Button>
+        <Button Width="100" Name="_73"></Button>
+        <Button Width="100" Name="_74"></Button>
+        <Button Width="100" Name="_75"></Button>
+        <Button Width="100" Name="_76"></Button>
+        <Button Width="100" Name="_77"></Button>
+        <Button Width="100" Name="_78"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
+        <Button Width="100" Name="_60"></Button>
+        <Button Width="100" Name="_61"></Button>
+        <Button Width="100" Name="_62"></Button>
+        <Button Width="100" Name="_63"></Button>
+        <Button Width="100" Name="_64"></Button>
+        <Button Width="100" Name="_65"></Button>
+        <Button Width="100" Name="_66"></Button>
+        <Button Width="100" Name="_67"></Button>
+        <Button Width="100" Name="_68"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
+        <Button Width="100" Name="_50"></Button>
+        <Button Width="100" Name="_51"></Button>
+        <Button Width="100" Name="_52"></Button>
+        <Button Width="100" Name="_53"></Button>
+        <Button Width="100" Name="_54"></Button>
+        <Button Width="100" Name="_55"></Button>
+        <Button Width="100" Name="_56"></Button>
+        <Button Width="100" Name="_57"></Button>
+        <Button Width="100" Name="_58"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100"></Button>
-        <Button x:Name="_21" Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
-        <Button Width="100"></Button>
+        <Button Width="100" Name="_40"></Button>
+        <Button Width="100" Name="_41"></Button>
+        <Button Width="100" Name="_42"></Button>
+        <Button Width="100" Name="_43"></Button>
+        <Button Width="100" Name="_44"></Button>
+        <Button Width="100" Name="_45"></Button>
+        <Button Width="100" Name="_46"></Button>
+        <Button Width="100" Name="_47"></Button>
+        <Button Width="100" Name="_48"></Button>
+      </DockPanel>
+      <DockPanel DockPanel.Dock="Top" Height="100">
+        <Button Width="100" Name="_30"></Button>
+        <Button Width="100" Name="_31"></Button>
+        <Button Width="100" Name="_32"></Button>
+        <Button Width="100" Name="_33"></Button>
+        <Button Width="100" Name="_34"></Button>
+        <Button Width="100" Name="_35"></Button>
+        <Button Width="100" Name="_36"></Button>
+        <Button Width="100" Name="_37"></Button>
+        <Button Width="100" Name="_38"></Button>
+      </DockPanel>
+      <DockPanel DockPanel.Dock="Top" Height="100">
+        <Button Width="100" Name="_20"></Button>
+        <Button Width="100" Name="_21"></Button>
+        <Button Width="100" Name="_22"></Button>
+        <Button Width="100" Name="_23"></Button>
+        <Button Width="100" Name="_24"></Button>
+        <Button Width="100" Name="_25"></Button>
+        <Button Width="100" Name="_26"></Button>
+        <Button Width="100" Name="_27"></Button>
+        <Button Width="100" Name="_28"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Button Width="100" Name="_10" Margin="48,0,0,0"></Button>

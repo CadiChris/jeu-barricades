@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barricades.UI"
         mc:Ignorable="d"
-        Title="Barricades ! -" Height="935" Width="915" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Barricades ! -" Height="1035" Width="915" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
   
   <local:PlateauUI></local:PlateauUI>
   

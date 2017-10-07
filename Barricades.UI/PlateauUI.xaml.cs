@@ -14,7 +14,7 @@ namespace Barricades.UI
 {
   public partial class PlateauUI : UserControl
   {
-    public Plateau Plateau { get; private set; }
+    public Plateau Plateau { get; }
 
     public PlateauUI()
     {
@@ -26,13 +26,9 @@ namespace Barricades.UI
 
     private void DessinerLePlateau()
     {
-      for (var y = 0; y < 9; y++)
-        DessinerTrou(Plateau[P($"0,{y}")], FindName($"_0{y}") as Button);
-
-      for (var y = 0; y < 9; y++)
-        DessinerTrou(Plateau[P($"1,{y}")], FindName($"_1{y}") as Button);
-
-      DessinerTrou(Plateau[P("2,1")], _21);
+      for (var x = 0; x < 10; x++)
+        for (var y = 0; y < 9; y++)
+          DessinerTrou(Plateau[P($"{x},{y}")], FindName($"_{x}{y}") as Button);
     }
 
     private void DessinerTrou(Trou trou, ContentControl ui)
