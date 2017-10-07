@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Barricades.Domaine.Position;
-using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Barricades.Domaine.Tests
 {
@@ -20,9 +18,7 @@ namespace Barricades.Domaine.Tests
 
       var trajetComplet = trajetA.ContinuerAvec(trajetB);
 
-      CollectionAssert.AreEqual(
-        new List<Position> { P("0,0"), P("0,1"), P("0,2") },
-        trajetComplet.Etapes);
+      trajetComplet.AssertLaComposition(P("0,0"), P("0,1"), P("0,2"));
     }
   }
 }

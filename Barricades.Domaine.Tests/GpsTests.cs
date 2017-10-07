@@ -16,9 +16,7 @@ namespace Barricades.Domaine.Tests
       var trajets = gps.TrajetsPour(3).ToList();
 
       AreEqual(1, trajets.Count);
-      CollectionAssert.AreEqual(
-        new List<Position> { P("0,0"), P("0,1"), P("0,2"), P("0,3") },
-        trajets.First().Etapes);
+      trajets.Single().AssertLaComposition(P("0,0"), P("0,1"), P("0,2"), P("0,3"));
     }
 
     [TestMethod]
@@ -33,28 +31,10 @@ namespace Barricades.Domaine.Tests
 
       AreEqual(2, trajets.Count);
       var trajetVers_2_3 = trajets[0];
-      CollectionAssert.AreEqual(
-        new List<Position> {P("2,2"), P("2,3")},
-        trajetVers_2_3.Etapes);
+      trajetVers_2_3.AssertLaComposition(P("2,2"), P("2,3"));
 
       var trajetVers_3_1 = trajets[1];
-      CollectionAssert.AreEqual(
-        new List<Position> { P("2,2"), P("3,1")},
-        trajetVers_3_1.Etapes,
-        $"{trajetVers_3_1}");
-    }
-  }
-
-  public static class TrouExtensions
-  {
-    public static Trou TrousQuiSeSuivent(this int combien, int ligne, int colonne = 0)
-    {
-      var position = P($"{ligne},{colonne}");
-
-      var finDuParcours = combien - 1 == 0;
-      return finDuParcours 
-        ? new Trou(position)
-        : new Trou(position, (combien - 1).TrousQuiSeSuivent(ligne, colonne+1));
+      trajetVers_3_1.AssertLaComposition(P("2,2"), P("3,1"));
     }
   }
 }
