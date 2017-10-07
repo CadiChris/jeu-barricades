@@ -15,22 +15,26 @@ namespace Barricades.Domaine.Tests
     public void MetLePlateauEnPlace()
     {
       var plateau = new Plateau();
-      AreEqual(Pion(Bleu, 0, 0), plateau.PionSur(new Position(0, 0)));
-      AreEqual(Pion(Bleu, 0, 1), plateau.PionSur(new Position(0, 1)));
-      AreEqual(Pion(Bleu, 1, 0), plateau.PionSur(new Position(1, 0)));
-      AreEqual(Pion(Bleu, 1, 1), plateau.PionSur(new Position(1, 1)));
-      AreEqual(Pion(Vert, 0, 2), plateau.PionSur(new Position(0, 2)));
-      AreEqual(Pion(Vert, 0, 3), plateau.PionSur(new Position(0, 3)));
-      AreEqual(Pion(Vert, 1, 2), plateau.PionSur(new Position(1, 2)));
-      AreEqual(Pion(Vert, 1, 3), plateau.PionSur(new Position(1, 3)));
-      AreEqual(Pion(Jaune, 0, 4), plateau.PionSur(new Position(0, 4)));
-      AreEqual(Pion(Jaune, 0, 5), plateau.PionSur(new Position(0, 5)));
-      AreEqual(Pion(Jaune, 1, 4), plateau.PionSur(new Position(1, 4)));
-      AreEqual(Pion(Jaune, 1, 5), plateau.PionSur(new Position(1, 5)));
-      AreEqual(Pion(Rouge, 0, 6), plateau.PionSur(new Position(0, 6)));
-      AreEqual(Pion(Rouge, 0, 7), plateau.PionSur(new Position(0, 7)));
-      AreEqual(Pion(Rouge, 1, 6), plateau.PionSur(new Position(1, 6)));
-      AreEqual(Pion(Rouge, 1, 7), plateau.PionSur(new Position(1, 7)));
+      // Bleu
+      plateau.AssertPion(Bleu, 0, 0);
+      plateau.AssertPion(Bleu, 0, 1);
+      plateau.AssertPion(Bleu, 1, 0);
+      plateau.AssertPion(Bleu, 1, 1);
+      // Vert
+      plateau.AssertPion(Vert, 0, 2);
+      plateau.AssertPion(Vert, 0, 3);
+      plateau.AssertPion(Vert, 1, 2);
+      plateau.AssertPion(Vert, 1, 3);
+      // Jaune
+      plateau.AssertPion(Jaune, 0, 4);
+      plateau.AssertPion(Jaune, 0, 5);
+      plateau.AssertPion(Jaune, 1, 4);
+      plateau.AssertPion(Jaune, 1, 5);
+      // Rouge
+      plateau.AssertPion(Rouge, 0, 6);
+      plateau.AssertPion(Rouge, 0, 7);
+      plateau.AssertPion(Rouge, 1, 6);
+      plateau.AssertPion(Rouge, 1, 7);
 
       foreach (var y in Range(0, 9))
         IsTrue(plateau[new Position(2, y)].EstVide);
@@ -61,6 +65,15 @@ namespace Barricades.Domaine.Tests
 
       AreEqual(Pion(Bleu, 2, 1), plateau.PionSur(new Position(2, 1)));
       IsNull(plateau[departDuBleu].Pion);
+    }
+  }
+
+  public static class PlateauTestsExtensions
+  {
+    public static void AssertPion(this Plateau plateau, Couleur couleurAttendue, int x, int y)
+    {
+      var pionAttendu = new Pion(couleurAttendue, new Position(x, y));
+      AreEqual(pionAttendu, plateau.PionSur(new Position(x, y)));
     }
   }
 }
