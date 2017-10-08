@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              Width="900" Height="1000">
   <UserControl.Resources>
-    <ImageBrush x:Key="ImageTrou" ImageSource="Images/Whole.png" Opacity=".85">
+    <ImageBrush x:Key="ImageTrou" ImageSource="Images/Whole.png" Opacity=".8">
       <ImageBrush.Transform>
         <ScaleTransform ScaleX=".5" ScaleY=".5" CenterX="50" CenterY="80"/>
       </ImageBrush.Transform>
@@ -15,88 +15,88 @@
   <Canvas Name="_canvas">
     <DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_90" Padding="30"></Button>
+        <Canvas Width="100" Name="_90"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_80"></Button>
-        <Button Width="100" Name="_81"></Button>
-        <Button Width="100" Name="_82"></Button>
-        <Button Width="100" Name="_83"></Button>
-        <Button Width="100" Name="_84"></Button>
-        <Button Width="100" Name="_85"></Button>
-        <Button Width="100" Name="_86"></Button>
-        <Button Width="100" Name="_87"></Button>
-        <Button Width="100" Name="_88"></Button>
+        <Canvas Width="100" Name="_80"></Canvas>
+        <Canvas Width="100" Name="_81"></Canvas>
+        <Canvas Width="100" Name="_82"></Canvas>
+        <Canvas Width="100" Name="_83"></Canvas>
+        <Canvas Width="100" Name="_84"></Canvas>
+        <Canvas Width="100" Name="_85"></Canvas>
+        <Canvas Width="100" Name="_86"></Canvas>
+        <Canvas Width="100" Name="_87"></Canvas>
+        <Canvas Width="100" Name="_88"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_70"></Button>
-        <Button Width="100" Name="_71"></Button>
-        <Button Width="100" Name="_72"></Button>
-        <Button Width="100" Name="_73" Margin="0,0,100,0"></Button>
-        <Button Width="100" Name="_74"></Button>
-        <Button Width="100" Name="_75"></Button>
-        <Button Width="100" Name="_76"></Button>
-        <Button Width="100" Name="_77"></Button>
+        <Canvas Width="100" Name="_70"></Canvas>
+        <Canvas Width="100" Name="_71"></Canvas>
+        <Canvas Width="100" Name="_72"></Canvas>
+        <Canvas Width="100" Name="_73" Margin="0,0,100,0"></Canvas>
+        <Canvas Width="100" Name="_74"></Canvas>
+        <Canvas Width="100" Name="_75"></Canvas>
+        <Canvas Width="100" Name="_76"></Canvas>
+        <Canvas Width="100" Name="_77"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_60"></Button>
+        <Canvas Width="100" Name="_60"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_50" Margin="50,0,0,0"></Button>
-        <Button Width="100" Name="_51" Margin="100,0,0,0"></Button>
-        <Button Width="100" Name="_52" Margin="50,0,50,0"></Button>
-        <Button Width="100" Name="_53" Margin="0,0,50,0"></Button>
-        <Button Width="100" Name="_54"></Button>
+        <Canvas Width="100" Name="_50" Margin="50,0,0,0"></Canvas>
+        <Canvas Width="100" Name="_51" Margin="100,0,0,0"></Canvas>
+        <Canvas Width="100" Name="_52" Margin="50,0,50,0"></Canvas>
+        <Canvas Width="100" Name="_53" Margin="0,0,50,0"></Canvas>
+        <Canvas Width="100" Name="_54"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_40" Margin="50,0,0,0"></Button>
-        <Button Width="100" Name="_41"></Button>
-        <Button Width="100" Name="_42"></Button>
-        <Button Width="100" Name="_43"></Button>
-        <Button Width="100" Name="_44"></Button>
-        <Button Width="100" Name="_45"></Button>
-        <Button Width="100" Name="_46"></Button>
-        <Button Width="100" Name="_47" Margin="0,0,50,0"></Button>
+        <Canvas Width="100" Name="_40" Margin="50,0,0,0"></Canvas>
+        <Canvas Width="100" Name="_41"></Canvas>
+        <Canvas Width="100" Name="_42"></Canvas>
+        <Canvas Width="100" Name="_43"></Canvas>
+        <Canvas Width="100" Name="_44"></Canvas>
+        <Canvas Width="100" Name="_45"></Canvas>
+        <Canvas Width="100" Name="_46"></Canvas>
+        <Canvas Width="100" Name="_47" Margin="0,0,50,0"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_30"></Button>
-        <Button Width="100" Name="_31" Margin="100,0,0,0"></Button>
-        <Button Width="100" Name="_32"></Button>
-        <Button Width="100" Name="_33"></Button>
-        <Button Width="100" Name="_34"></Button>
-        <Button Width="100" Name="_35" Margin="0,0,100,0"></Button>
-        <Button Width="100" Name="_36"></Button>
+        <Canvas Width="100" Name="_30"></Canvas>
+        <Canvas Width="100" Name="_31" Margin="100,0,0,0"></Canvas>
+        <Canvas Width="100" Name="_32"></Canvas>
+        <Canvas Width="100" Name="_33"></Canvas>
+        <Canvas Width="100" Name="_34"></Canvas>
+        <Canvas Width="100" Name="_35" Margin="0,0,100,0"></Canvas>
+        <Canvas Width="100" Name="_36"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_20"></Button>
-        <Button Width="100" Name="_21"></Button>
-        <Button Width="100" Name="_22"></Button>
-        <Button Width="100" Name="_23"></Button>
-        <Button Width="100" Name="_24"></Button>
-        <Button Width="100" Name="_25"></Button>
-        <Button Width="100" Name="_26"></Button>
-        <Button Width="100" Name="_27"></Button>
-        <Button Width="100" Name="_28"></Button>
+        <Canvas Width="100" Name="_20"></Canvas>
+        <Canvas Width="100" Name="_21"></Canvas>
+        <Canvas Width="100" Name="_22"></Canvas>
+        <Canvas Width="100" Name="_23"></Canvas>
+        <Canvas Width="100" Name="_24"></Canvas>
+        <Canvas Width="100" Name="_25"></Canvas>
+        <Canvas Width="100" Name="_26"></Canvas>
+        <Canvas Width="100" Name="_27"></Canvas>
+        <Canvas Width="100" Name="_28"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_10" Margin="50,0,0,0"></Button>
-        <Button Width="100" Name="_11"></Button>
-        <Button Width="100" Name="_12"></Button>
-        <Button Width="100" Name="_13"></Button>
-        <Button Width="100" Name="_14"></Button>
-        <Button Width="100" Name="_15"></Button>
-        <Button Width="100" Name="_16"></Button>
-        <Button Width="100" Name="_17" Margin="0,0,50,0"></Button>
+        <Canvas Width="100" Name="_10" Margin="50,0,0,0"></Canvas>
+        <Canvas Width="100" Name="_11"></Canvas>
+        <Canvas Width="100" Name="_12"></Canvas>
+        <Canvas Width="100" Name="_13"></Canvas>
+        <Canvas Width="100" Name="_14"></Canvas>
+        <Canvas Width="100" Name="_15"></Canvas>
+        <Canvas Width="100" Name="_16"></Canvas>
+        <Canvas Width="100" Name="_17" Margin="0,0,50,0"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_00" Margin="50,0,0,0"></Button>
-        <Button Width="100" Name="_01"></Button>
-        <Button Width="100" Name="_02"></Button>
-        <Button Width="100" Name="_03"></Button>
-        <Button Width="100" Name="_04"></Button>
-        <Button Width="100" Name="_05"></Button>
-        <Button Width="100" Name="_06"></Button>
-        <Button Width="100" Name="_07" Margin="0,0,50,0"></Button>
+        <Canvas Width="100" Name="_00" Margin="50,0,0,0"></Canvas>
+        <Canvas Width="100" Name="_01"></Canvas>
+        <Canvas Width="100" Name="_02"></Canvas>
+        <Canvas Width="100" Name="_03"></Canvas>
+        <Canvas Width="100" Name="_04"></Canvas>
+        <Canvas Width="100" Name="_05"></Canvas>
+        <Canvas Width="100" Name="_06"></Canvas>
+        <Canvas Width="100" Name="_07" Margin="0,0,50,0"></Canvas>
       </DockPanel>
     </DockPanel>
   </Canvas>
