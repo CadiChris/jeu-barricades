@@ -53,7 +53,7 @@ namespace Barricades.Domaine.Tests
       var departDuBleu = P("1,0");
       var trajetsUnique = plateau.TrajetsPour(departDuBleu, UN_COUP).First();
 
-      plateau.Deplacer(plateau.PionSur(departDuBleu), trajetsUnique);
+      plateau.Deplacer(trajetsUnique);
 
       AreEqual(new Pion(Bleu, P("2,1")), plateau.PionSur(P("2,1")));
       IsNull(plateau[departDuBleu].Pion);

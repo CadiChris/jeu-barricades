@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Barricades.Domaine;
-using static System.Windows.Application;
-using static System.Windows.HorizontalAlignment;
 using static Barricades.Domaine.Position;
 
 namespace Barricades.UI
@@ -22,6 +20,9 @@ namespace Barricades.UI
       InitializeComponent();
 
       Plateau = new Plateau();
+      var gps = new Gps(Plateau[P("1,1")]);
+      var trajets = gps.TrajetsPour(3);
+      Plateau.Deplacer(trajets.ToList()[1]);
       Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(DessinerLePlateau));
     }
 

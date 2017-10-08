@@ -68,12 +68,13 @@ namespace Barricades.Domaine
       return gps.TrajetsPour(nombre);
     }
 
-    public void Deplacer(Pion pion, Trajet trajet)
+    public void Deplacer(Trajet trajet)
     {
+      var pionDeDepart = this[trajet.Depart].Pion;
       var trouDeDepartVide = this[trajet.Depart].Vider();
       this[trajet.Depart] = trouDeDepartVide;
 
-      Poser(pion.Couleur, trajet.Arrivee);
+      Poser(pionDeDepart.Couleur, trajet.Arrivee);
     }
   }
 }
