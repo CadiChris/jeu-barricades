@@ -8,13 +8,14 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Barricades.Domaine;
 using static Barricades.Domaine.Position;
+using static Barricades.UI.CouleursUI;
 
 namespace Barricades.UI
 {
   public partial class PlateauUI : UserControl
   {
     public Plateau Plateau { get; }
-    private Window _selection;
+    private SelectionUI _selection;
 
     public PlateauUI()
     {
@@ -30,14 +31,8 @@ namespace Barricades.UI
 
     private void AfficherFenetreDeSelection()
     {
-      _selection = new Window()
-      {
-        Width = 150,
-        Height = 150,
-        Title = "Barricades ! - Sélection",
-        ResizeMode = ResizeMode.NoResize,
-      };
-      _selection.Show();
+      _selection = new SelectionUI();
+      _selection.Afficher();
     }
 
     private void DessinerLePlateau()
@@ -63,7 +58,7 @@ namespace Barricades.UI
 
     private void Selectionner(Trou selection)
     {
-      _selection.Content = selection.EstVide ? null : new Ellipse {Fill = Couleurs[selection.Pion.Couleur], Width = 50, Height = 60};
+      _selection.Selectionner(selection);
     }
 
     private static void DessinerPion(Trou trou, Canvas ui)
@@ -74,7 +69,7 @@ namespace Barricades.UI
           Margin = new Thickness(27, 25, 0, 0),
           Width = 45,
           Height = 50,
-          Fill = Couleurs[trou.Pion.Couleur]
+          Fill = BrushDeCouleur(trou.Pion.Couleur)
         });
     }
 
@@ -101,18 +96,9 @@ namespace Barricades.UI
       }
     }
 
-    private static readonly Dictionary<Couleur, SolidColorBrush> Couleurs = new Dictionary<Couleur, SolidColorBrush>
-    {
-      {Couleur.Bleu, new SolidColorBrush(Colors.DodgerBlue)},
-      {Couleur.Jaune, new SolidColorBrush(Colors.Gold)},
-      {Couleur.Vert, new SolidColorBrush(Colors.OliveDrab)},
-      {Couleur.Rouge, new SolidColorBrush(Colors.Tomato)},
-      {Couleur.Barricade, new SolidColorBrush(Colors.Brown)},
-    };
-
     private void PlateauUI_Unloaded(object sender, RoutedEventArgs e)
     {
-      _selection.Close();
+      _selection.Fermer();
     }
   }
 }
