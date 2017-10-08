@@ -44,7 +44,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControleDeTrajet.cs" />
     <Compile Include="Couleur.cs" />
     <Compile Include="Gps.cs" />
     <Compile Include="NomsDesCouleurs.cs" />
