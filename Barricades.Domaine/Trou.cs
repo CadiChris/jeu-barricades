@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Value;
 
@@ -7,8 +8,9 @@ namespace Barricades.Domaine
   public class Trou : ValueType<Trou>
   {
     public Position Position { get; }
-    public List<Trou> Successeurs { get; }
     public Pion Pion { get; }
+    private List<Trou> _successeurs;
+    public ReadOnlyCollection<Trou> Successeurs { get; private set; }
 
     public int X => Position.X;
     public int Y => Position.Y;
@@ -22,7 +24,14 @@ namespace Barricades.Domaine
     {
       Position = position;
       Pion = pion;
-      Successeurs = successeurs;
+      _successeurs = successeurs;
+      Successeurs = new ReadOnlyCollection<Trou>(successeurs);
+    }
+
+    public void RemplacerSuccesseurs(params Trou[] nouveauxSuccesseurs)
+    {
+      _successeurs = nouveauxSuccesseurs.ToList();
+      Successeurs = new ReadOnlyCollection<Trou>(_successeurs);
     }
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
@@ -32,14 +41,8 @@ namespace Barricades.Domaine
 
     public override string ToString() => $"{Position} > {Pion}";
 
-    public Trou Poser(Pion pion)
-    {
-      return new Trou(Position, pion, Successeurs);
-    }
+    public Trou Poser(Pion pion)=> new Trou(Position, pion, _successeurs);
 
-    public Trou Vider()
-    {
-      return new Trou(Position, null, Successeurs);
-    }
+    public Trou Vider() => new Trou(Position, null, _successeurs);
   }
 }
