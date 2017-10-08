@@ -49,8 +49,8 @@ namespace Barricades.UI
         var chemin = new Line
         {
           Stroke = Brushes.Black,
-          StrokeThickness = 7,
-          Opacity = .7,
+          StrokeThickness = 3,
+          Opacity = .5,
           X1 = x1,
           Y1 = y1,
           X2 = maPosition.X + ui.ActualWidth / 2,
