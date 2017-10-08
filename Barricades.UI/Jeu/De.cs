@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Barricades.UI
+namespace Barricades.UI.Jeu
 {
   public class De
   {

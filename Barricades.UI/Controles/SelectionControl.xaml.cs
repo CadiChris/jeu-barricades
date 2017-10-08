@@ -1,13 +1,12 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
-using Barricades.Domaine;
-using static Barricades.UI.CouleursUI;
+using Barricades.Domaine.Jeu;
+using Barricades.UI.Jeu;
 
-namespace Barricades.UI
+namespace Barricades.UI.Controles
 {
   public partial class SelectionControl : UserControl, INotifyPropertyChanged
   {
@@ -38,7 +37,7 @@ namespace Barricades.UI
       if (Trou.EstVide)
         _canvas.Children.Clear();
       else
-        _canvas.Children.Add(new Ellipse {Fill = BrushDeCouleur(Trou.Pion.Couleur), Width = 50, Height = 60});
+        _canvas.Children.Add(new Ellipse {Fill = CouleursUI.BrushDeCouleur(Trou.Pion.Couleur), Width = 50, Height = 60});
     }
 
     private void LancerLeDe_Click(object sender, RoutedEventArgs e)

@@ -1,8 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Value;
-using static System.Int32;
 
-namespace Barricades.Domaine
+namespace Barricades.Domaine.Jeu
 {
   public class Position : ValueType<Position>
   {
@@ -25,7 +25,7 @@ namespace Barricades.Domaine
     public static Position P(string coordonnees)
     {
       coordonnees = coordonnees.Replace(" ", "");
-      return new Position(Parse(coordonnees.Split(',')[0]), Parse(coordonnees.Split(',')[1]));
+      return new Position(Int32.Parse(coordonnees.Split(',')[0]), Int32.Parse(coordonnees.Split(',')[1]));
     }
   }
 }

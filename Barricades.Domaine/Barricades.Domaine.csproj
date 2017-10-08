@@ -44,15 +44,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Couleur.cs" />
-    <Compile Include="Gps.cs" />
-    <Compile Include="NomsDesCouleurs.cs" />
-    <Compile Include="Plateaux.cs" />
-    <Compile Include="Position.cs" />
-    <Compile Include="Trajet.cs" />
-    <Compile Include="Trou.cs" />
-    <Compile Include="Pion.cs" />
-    <Compile Include="Plateau.cs" />
+    <Compile Include="Deplacement\Gps.cs" />
+    <Compile Include="Jeu\Couleur.cs" />
+    <Compile Include="Jeu\NomsDesCouleurs.cs" />
+    <Compile Include="Jeu\Plateaux.cs" />
+    <Compile Include="Jeu\Position.cs" />
+    <Compile Include="Deplacement\Trajet.cs" />
+    <Compile Include="Jeu\Trou.cs" />
+    <Compile Include="Jeu\Pion.cs" />
+    <Compile Include="Jeu\Plateau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

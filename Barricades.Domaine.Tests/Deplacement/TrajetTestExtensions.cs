@@ -1,9 +1,11 @@
 using System.Linq;
+using Barricades.Domaine.Deplacement;
+using Barricades.Domaine.Jeu;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Barricades.Domaine.Tests
+namespace Barricades.Domaine.Tests.Deplacement
 {
-  public static class TrajetExtensions
+  public static class TrajetTestExtensions
   {
     public static void AssertLaComposition(this Trajet trajet, params Position[] positions)
     {

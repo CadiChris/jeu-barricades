@@ -1,16 +1,14 @@
 using System.Windows;
-using System.Windows.Shapes;
-using Barricades.Domaine;
-using static Barricades.UI.CouleursUI;
+using Barricades.Domaine.Jeu;
 
-namespace Barricades.UI
+namespace Barricades.UI.Controles
 {
   public class SelectionUI
   {
     private readonly Window _window;
-    private readonly SelectionControl _selectionControl;
+    private readonly Controles.SelectionControl _selectionControl;
 
-    public SelectionUI(SelectionControl selectionControl)
+    public SelectionUI(Controles.SelectionControl selectionControl)
     {
       _selectionControl = selectionControl;
       _window = new Window()

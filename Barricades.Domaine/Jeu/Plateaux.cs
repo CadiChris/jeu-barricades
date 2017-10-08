@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using static Barricades.Domaine.Position;
-
-namespace Barricades.Domaine
+﻿namespace Barricades.Domaine.Jeu
 {
   internal static class Plateaux
   {
@@ -91,7 +88,7 @@ namespace Barricades.Domaine
     private static void Ligne(int ligne, Trou[,] trous, int nombreDeColonnes)
     {
       for (var y = 0; y < nombreDeColonnes; y++)
-        trous[ligne, y] = new Trou(P($"{ligne},{y}"));
+        trous[ligne, y] = new Trou(Position.P($"{ligne},{y}"));
     }
   }
 }

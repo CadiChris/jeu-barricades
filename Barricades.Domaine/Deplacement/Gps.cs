@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
+using Barricades.Domaine.Jeu;
 
-namespace Barricades.Domaine
+namespace Barricades.Domaine.Deplacement
 {
   public class Gps
   {

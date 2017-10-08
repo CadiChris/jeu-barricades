@@ -6,11 +6,11 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using Barricades.Domaine;
-using static Barricades.Domaine.Position;
-using static Barricades.UI.CouleursUI;
+using Barricades.Domaine.Deplacement;
+using Barricades.Domaine.Jeu;
+using Barricades.UI.Jeu;
 
-namespace Barricades.UI
+namespace Barricades.UI.Controles
 {
   public partial class PlateauUI : UserControl
   {
@@ -36,8 +36,8 @@ namespace Barricades.UI
     {
       for (var x = 0; x < 10; x++)
         for (var y = 0; y < 9; y++)
-          if (Plateau[P($"{x},{y}")] != null)
-            DessinerTrou(Plateau[P($"{x},{y}")], FindName($"_{x}{y}") as Canvas);
+          if (Plateau[Position.P($"{x},{y}")] != null)
+            DessinerTrou(Plateau[Position.P($"{x},{y}")], FindName($"_{x}{y}") as Canvas);
     }
 
     private void DessinerTrou(Trou trou, Canvas ui)
@@ -129,7 +129,7 @@ namespace Barricades.UI
         Margin = new Thickness(27, 25, 0, 0),
         Width = 45,
         Height = 50,
-        Fill = BrushDeCouleur(couleur)
+        Fill = CouleursUI.BrushDeCouleur(couleur)
       };
     }
 

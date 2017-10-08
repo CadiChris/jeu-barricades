@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
+using Barricades.Domaine.Deplacement;
 using Value;
-using static Barricades.Domaine.NomsDesCouleurs;
-using System.Linq;
 
-namespace Barricades.Domaine
+namespace Barricades.Domaine.Jeu
 {
   public class Pion : ValueType<Pion>
   {
@@ -23,7 +22,7 @@ namespace Barricades.Domaine
       Position
     };
 
-    public override string ToString() => $"{NomDe(Couleur)}, {Position}";
+    public override string ToString() => $"{NomsDesCouleurs.NomDe(Couleur)}, {Position}";
 
     public Pion Emprunter(Trajet trajet)
     {

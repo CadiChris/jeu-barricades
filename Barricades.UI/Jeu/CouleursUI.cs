@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
-using Barricades.Domaine;
+using Barricades.Domaine.Jeu;
 
-namespace Barricades.UI
+namespace Barricades.UI.Jeu
 {
   public static class CouleursUI
   {

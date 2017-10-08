@@ -1,4 +1,4 @@
-﻿namespace Barricades.Domaine
+namespace Barricades.Domaine.Jeu
 {
   public enum Couleur
   {

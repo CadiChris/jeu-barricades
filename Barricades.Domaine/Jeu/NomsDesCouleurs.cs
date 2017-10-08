@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Barricades.Domaine
+namespace Barricades.Domaine.Jeu
 {
   public static class NomsDesCouleurs
   {

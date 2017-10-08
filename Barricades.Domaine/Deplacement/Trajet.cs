@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using static System.String;
+using Barricades.Domaine.Jeu;
 
-namespace Barricades.Domaine
+namespace Barricades.Domaine.Deplacement
 {
   public class Trajet
   {
@@ -43,7 +43,7 @@ namespace Barricades.Domaine
         toutesLesEtapes.ToArray());
     }
 
-    public override string ToString() => Join("->", Etapes.Select(e => $"{e}"));
+    public override string ToString() => String.Join("->", Etapes.Select(e => $"{e}"));
 
     public Trajet Bloquer()
     {

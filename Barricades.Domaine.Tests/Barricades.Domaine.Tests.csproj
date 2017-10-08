@@ -55,13 +55,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="GpsTests.cs" />
-    <Compile Include="PlateauTests.cs" />
+    <Compile Include="Deplacement\GpsTests.cs" />
+    <Compile Include="Deplacement\TrajetTestExtensions.cs" />
+    <Compile Include="Jeu\PlateauTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrajetExtensions.cs" />
-    <Compile Include="TrajetTests.cs" />
-    <Compile Include="TrouExtensions.cs" />
-    <Compile Include="TrouTests.cs" />
+    <Compile Include="Deplacement\TrajetTests.cs" />
+    <Compile Include="Jeu\TrouTestExtensions.cs" />
+    <Compile Include="Jeu\TrouTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Barricades.Domaine\Barricades.Domaine.csproj">

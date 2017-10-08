@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Value;
 
-namespace Barricades.Domaine
+namespace Barricades.Domaine.Jeu
 {
   public class Trou : ValueType<Trou>
   {

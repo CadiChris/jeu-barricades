@@ -1,6 +1,8 @@
-﻿namespace Barricades.Domaine.Tests
+﻿using Barricades.Domaine.Jeu;
+
+namespace Barricades.Domaine.Tests.Jeu
 {
-  public static class TrouExtensions
+  public static class TrouTestExtensions
   {
     public static Trou TrousQuiSeSuivent(this int combien, int ligne, int colonne = 0)
     {

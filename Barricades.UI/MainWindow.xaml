@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barricades.UI"
+        xmlns:controles="clr-namespace:Barricades.UI.Controles"
         mc:Ignorable="d"
         Title="Barricades ! - Plateau" Height="1035" Width="915" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
   <Window.Background>
     <ImageBrush ImageSource="Images/Bois.jpg" TileMode="Tile" Stretch="UniformToFill"/>
   </Window.Background>
 
-  <local:PlateauUI></local:PlateauUI>
+  <controles:PlateauUI></controles:PlateauUI>
 
 </Window>
