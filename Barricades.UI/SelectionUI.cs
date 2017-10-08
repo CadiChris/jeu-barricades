@@ -23,6 +23,10 @@ namespace Barricades.UI
       };
     }
 
+    public bool EstComplete => _selectionControl.EstComplete;
+    public int Chiffre => _selectionControl.Chiffre.Value;
+    public Trou Trou => _selectionControl.Trou;
+
     public void Afficher()
     {
       _window.Show();
@@ -36,6 +40,11 @@ namespace Barricades.UI
     public void Selectionner(Trou selection)
     {
       _selectionControl.Selectionner(selection);
+    }
+
+    public void Effacer()
+    {
+      _selectionControl.Effacer();
     }
   }
 }

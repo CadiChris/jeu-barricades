@@ -54,5 +54,10 @@ namespace Barricades.Domaine
     {
       return new Trajet(EstBloque, prise, Etapes.ToArray());
     }
+
+    public bool MeneA(Position destination)
+    {
+      return !EstBloque && Arrivee == destination;
+    }
   }
 }

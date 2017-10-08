@@ -11,13 +11,15 @@ namespace Barricades.UI
 {
   public partial class SelectionControl : UserControl, INotifyPropertyChanged
   {
-    private int _chiffre;
-
-    public int Chiffre
+    private int? _chiffre;
+    public int? Chiffre
     {
       get { return _chiffre; }
       private set { _chiffre = value; OnPropertyChanged();}
     }
+
+    public bool EstComplete => Chiffre.HasValue && Trou != null && !Trou.EstVide;
+    public Trou Trou { get; private set; }
 
     public SelectionControl()
     {
@@ -25,12 +27,18 @@ namespace Barricades.UI
       DataContext = this;
     }
 
-    public void Selectionner(Trou selection)
+    public void Selectionner(Trou trou)
     {
-      if (selection.EstVide)
+      Trou = trou;
+      DessinerSelection();
+    }
+
+    private void DessinerSelection()
+    {
+      if (Trou.EstVide)
         _canvas.Children.Clear();
       else
-        _canvas.Children.Add(new Ellipse { Fill = BrushDeCouleur(selection.Pion.Couleur), Width = 50, Height = 60 });
+        _canvas.Children.Add(new Ellipse {Fill = BrushDeCouleur(Trou.Pion.Couleur), Width = 50, Height = 60});
     }
 
     private void LancerLeDe_Click(object sender, RoutedEventArgs e)
@@ -44,10 +52,15 @@ namespace Barricades.UI
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
-
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Effacer()
+    {
+      Chiffre = null;
+      Trou = null;
     }
   }
 }

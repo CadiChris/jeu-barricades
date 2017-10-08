@@ -23,9 +23,6 @@ namespace Barricades.UI
       AfficherFenetreDeSelection();
 
       Plateau = new Plateau();
-      var gps = new Gps(Plateau[P("1,1")]);
-      var trajets = gps.TrajetsPour(3);
-      Plateau.Deplacer(trajets.ToList()[1]);
       Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(DessinerLePlateau));
     }
 
@@ -53,7 +50,27 @@ namespace Barricades.UI
 
     private void AbonnerAuClic(Trou trou, Canvas ui)
     {
-      ui.MouseLeftButtonDown += (sender, args) => Selectionner(trou);
+      ui.MouseLeftButtonDown += (sender, args) => Jouer(trou);
+    }
+
+    private void Jouer(Trou trou)
+    {
+      if (_selection.EstComplete)
+      {
+        var trajetsPermis = new Gps(_selection.Trou).TrajetsPour(_selection.Chiffre).ToList();
+        var destinationVoulue = trou.Position;
+        var deplacement = trajetsPermis.FirstOrDefault(t => t.MeneA(destinationVoulue));
+        if (deplacement != null)
+        {
+          Plateau.Deplacer(deplacement);
+          DessinerPion(Plateau[deplacement.Depart], FindName($"_{deplacement.Depart.X}{deplacement.Depart.Y}") as Canvas);
+          DessinerPion(Plateau[deplacement.Arrivee], FindName($"_{deplacement.Arrivee.X}{deplacement.Arrivee.Y}") as Canvas);
+          _selection.Effacer();
+        }
+      }
+      else 
+        _selection.Selectionner(trou);
+
     }
 
     private void Selectionner(Trou selection)
@@ -61,9 +78,12 @@ namespace Barricades.UI
       _selection.Selectionner(selection);
     }
 
-    private static void DessinerPion(Trou trou, Canvas ui)
+    private void DessinerPion(Trou trou, Canvas ui)
     {
-      if (!trou.EstVide)
+      if (trou.EstVide)
+        ui.Children.Clear();
+      else
+      {
         ui.Children.Add(new Ellipse()
         {
           Margin = new Thickness(27, 25, 0, 0),
@@ -71,6 +91,8 @@ namespace Barricades.UI
           Height = 50,
           Fill = BrushDeCouleur(trou.Pion.Couleur)
         });
+        ui.MouseLeftButtonUp += (sender, args) => Jouer(trou);
+      }
     }
 
     private void DessinerLesChemins(Trou trou, Canvas ui)
