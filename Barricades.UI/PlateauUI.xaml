@@ -6,12 +6,16 @@
              mc:Ignorable="d" 
              Width="900" Height="1000">
   <UserControl.Resources>
-    <ImageBrush x:Key="ImageTrou" ImageSource="Images/Trou.png"></ImageBrush>
+    <ImageBrush x:Key="ImageTrou" ImageSource="Images/Whole.png" Opacity=".85">
+      <ImageBrush.Transform>
+        <ScaleTransform ScaleX=".5" ScaleY=".5" CenterX="50" CenterY="80"/>
+      </ImageBrush.Transform>
+    </ImageBrush>
   </UserControl.Resources>
   <Canvas Name="_canvas">
     <DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_90"></Button>
+        <Button Width="100" Name="_90" Padding="30"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Button Width="100" Name="_80"></Button>

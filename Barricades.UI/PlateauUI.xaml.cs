@@ -45,14 +45,16 @@ namespace Barricades.UI
         var successeurUi = FindName($"_{successeur.Position.X}{successeur.Position.Y}") as Button;
         var positionDuSuccesseur = successeurUi.TransformToAncestor(this).Transform(new Point(0, 0));
         var maPosition = ui.TransformToAncestor(this).Transform(new Point(0, 0));
+
         var chemin = new Line()
         {
           Stroke = Brushes.Black,
-          StrokeThickness = 3,
+          StrokeThickness = 7,
+          Opacity = .7,
           X1 = positionDuSuccesseur.X + successeurUi.ActualWidth / 2,
-          Y1 = positionDuSuccesseur.Y + successeurUi.ActualHeight / 2,
+          Y1 = positionDuSuccesseur.Y + successeurUi.ActualHeight / 2 + 15,
           X2 = maPosition.X + ui.ActualWidth / 2,
-          Y2 = maPosition.Y + ui.ActualHeight / 2
+          Y2 = maPosition.Y + ui.ActualHeight / 2 + 15
         };
         _canvas.Children.Add(chemin);
       }
