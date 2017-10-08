@@ -14,10 +14,13 @@ namespace Barricades.UI
   public partial class PlateauUI : UserControl
   {
     public Plateau Plateau { get; }
+    private readonly Window _selection;
 
     public PlateauUI()
     {
       InitializeComponent();
+      _selection = new  Window() {Width = 150, Height = 150 };
+      _selection.Show();
 
       Plateau = new Plateau();
       var gps = new Gps(Plateau[P("1,1")]);
@@ -37,9 +40,26 @@ namespace Barricades.UI
     private void DessinerTrou(Trou trou, Canvas ui)
     {
       ui.Background = (ImageBrush) Resources["ImageTrou"];
-      if (!trou.EstVide)
-        ui.Children.Add(new Ellipse() { Margin = new Thickness(27, 25, 0, 0), Width = 45, Height = 50, Fill = Couleurs[trou.Pion.Couleur]});
+      DessinerPion(trou, ui);
+      DessinerLesChemins(trou, ui);
 
+
+    }
+
+    private static void DessinerPion(Trou trou, Canvas ui)
+    {
+      if (!trou.EstVide)
+        ui.Children.Add(new Ellipse()
+        {
+          Margin = new Thickness(27, 25, 0, 0),
+          Width = 45,
+          Height = 50,
+          Fill = Couleurs[trou.Pion.Couleur]
+        });
+    }
+
+    private void DessinerLesChemins(Trou trou, Canvas ui)
+    {
       foreach (var successeur in trou.Successeurs)
       {
         var successeurUi = FindName($"_{successeur.Position.X}{successeur.Position.Y}") as Canvas;
@@ -69,5 +89,10 @@ namespace Barricades.UI
       {Couleur.Rouge, new SolidColorBrush(Colors.Tomato)},
       {Couleur.Barricade, new SolidColorBrush(Colors.Brown)},
     };
+
+    private void PlateauUI_Unloaded(object sender, RoutedEventArgs e)
+    {
+      _selection.Close();
+    }
   }
 }
