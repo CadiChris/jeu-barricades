@@ -9,16 +9,16 @@ namespace Barricades.Domaine
     {
       var trous =  new Trou[10, 9];
 
-      Ligne(trous, 9, nombreDeColonnes:1);
-      Ligne(trous, 8, nombreDeColonnes:9);
-      Ligne(trous, 7, nombreDeColonnes:8);
-      Ligne(trous, 6, nombreDeColonnes:1);
-      Ligne(trous, 5, nombreDeColonnes:5);
-      Ligne(trous, 4, nombreDeColonnes:8);
-      Ligne(trous, 3, nombreDeColonnes:7);
-      Ligne(trous, 2, nombreDeColonnes:9);
-      Ligne(trous, 1, nombreDeColonnes:8);
-      Ligne(trous, 0, nombreDeColonnes:8);
+      Ligne(9, trous, nombreDeColonnes: 1);
+      Ligne(8, trous, nombreDeColonnes: 9);
+      Ligne(7, trous, nombreDeColonnes: 8);
+      Ligne(6, trous, nombreDeColonnes: 1);
+      Ligne(5, trous, nombreDeColonnes: 5);
+      Ligne(4, trous, nombreDeColonnes: 8);
+      Ligne(3, trous, nombreDeColonnes: 7);
+      Ligne(2, trous, nombreDeColonnes: 9);
+      Ligne(1, trous, nombreDeColonnes: 8);
+      Ligne(0, trous, nombreDeColonnes: 8);
 
       trous[1,0].RemplacerSuccesseurs(trous[2,1]);
       trous[1,1].RemplacerSuccesseurs(trous[2,1]);
