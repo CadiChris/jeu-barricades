@@ -58,8 +58,7 @@ namespace Barricades.Domaine
     private void Poser(Couleur couleur, Position position)
     {
       var pion = new Pion(couleur, position);
-      var trouRempli = this[position].Poser(pion);
-      this[position] = trouRempli;
+      this[position].Poser(pion);
     }
  
     public IEnumerable<Trajet> TrajetsPour(Position position, int nombre)
@@ -71,9 +70,7 @@ namespace Barricades.Domaine
     public void Deplacer(Trajet trajet)
     {
       var pionDeDepart = this[trajet.Depart].Pion;
-      var trouDeDepartVide = this[trajet.Depart].Vider();
-      this[trajet.Depart] = trouDeDepartVide;
-
+      this[trajet.Depart].Vider();
       Poser(pionDeDepart.Couleur, trajet.Arrivee);
     }
   }

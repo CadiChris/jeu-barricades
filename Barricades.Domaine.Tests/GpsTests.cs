@@ -40,14 +40,12 @@ namespace Barricades.Domaine.Tests
     {
       var depart = 4.TrousQuiSeSuivent(0);
       var _0_1 = depart.Successeurs[0];
-      var _0_2 = _0_1.Successeurs[0];
-      _0_1.RemplacerSuccesseurs(_0_2.Poser(new Pion(Bleu, P("0,2"))));
+      _0_1.Poser(new Pion(Bleu, P("0,1")));
 
       var gps = new Gps(depart);
       var trajets = gps.TrajetsPour(6).ToList();
 
       AreEqual(1, trajets.Count);
-      AreEqual(2, trajets.Single().Etapes.Count);
       IsTrue(trajets.Single().EstBloque);
     }
 
@@ -57,12 +55,29 @@ namespace Barricades.Domaine.Tests
       var depart = 4.TrousQuiSeSuivent(0);
       var _0_1 = depart.Successeurs[0];
       var _0_2 = _0_1.Successeurs[0];
-       _0_1.RemplacerSuccesseurs(_0_2.Poser(new Pion(Bleu, P("0,2"))));
+      _0_2.Poser(new Pion(Bleu, P("0,2")));
 
       var gps = new Gps(depart);
       var trajets = gps.TrajetsPour(2).ToList();
 
-      AreEqual(new Pion(Bleu, P("0,2")),  trajets.Single().Prise);
+      AreEqual(new Pion(Bleu, P("0,2")), trajets.Single().Prise);
+    }
+
+    [TestMethod]
+    public void NePrendPasDePionDeMemeCouleur()
+    {
+      var departBleu = new Trou(P("0,0"));
+      var suivant = new Trou(P("0,1"));
+      var arriveeBleue = new Trou(P("0,2"));
+
+      departBleu.Poser(new Pion(Bleu, P("0,0")));
+      arriveeBleue.Poser(new Pion(Bleu, P("0,2")));
+
+      departBleu.RemplacerSuccesseurs(suivant);
+      suivant.RemplacerSuccesseurs(arriveeBleue);
+
+      var trajets = new Gps(departBleu).TrajetsPour(2);
+      AreEqual(true, trajets.Single().EstBloque);
     }
 
     [TestMethod]

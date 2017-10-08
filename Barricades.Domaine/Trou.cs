@@ -8,15 +8,15 @@ namespace Barricades.Domaine
   public class Trou : ValueType<Trou>
   {
     public Position Position { get; }
-    public Pion Pion { get; }
+    public Pion Pion { get; private set; }
     private List<Trou> _successeurs;
     public ReadOnlyCollection<Trou> Successeurs { get; private set; }
 
     public int X => Position.X;
     public int Y => Position.Y;
     public bool EstVide => Pion == null;
-    
-    public Trou(Position position, params Trou[] successeurs): this(position, null, successeurs.ToList())
+
+    public Trou(Position position, params Trou[] successeurs) : this(position, null, successeurs.ToList())
     {
     }
 
@@ -36,13 +36,19 @@ namespace Barricades.Domaine
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
-      return new List<object> { Position };
+      return new List<object> {Position};
     }
 
     public override string ToString() => $"{Position} > {Pion}";
 
-    public Trou Poser(Pion pion)=> new Trou(Position, pion, _successeurs);
+    public void Poser(Pion pion)
+    {
+      Pion = pion;
+    }
 
-    public Trou Vider() => new Trou(Position, null, _successeurs);
+    public void Vider()
+    {
+      Pion = null;
+    }
   }
 }
