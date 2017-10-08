@@ -31,7 +31,7 @@ namespace Barricades.UI
 
     private void AfficherFenetreDeSelection()
     {
-      _selection = new SelectionUI();
+      _selection = new SelectionUI(new SelectionControl());
       _selection.Afficher();
     }
 

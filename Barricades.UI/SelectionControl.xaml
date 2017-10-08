@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Barricades.UI.SelectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Barricades.UI"
+             mc:Ignorable="d" 
+             Background="Cornsilk"
+             d:DesignHeight="300" d:DesignWidth="300">
+  <DockPanel>
+    <DockPanel Height="50" VerticalAlignment="Top" DockPanel.Dock="Top">
+      <Label VerticalAlignment="Center">CHIFFRE</Label>
+      <Label VerticalAlignment="Center" FontSize="20" Content="{Binding Chiffre}" />
+      <Button Width="60" Padding="10,0" HorizontalAlignment="Right" Click="LancerLeDe_Click">
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center">Lancer le Dé</TextBlock>
+      </Button>
+    </DockPanel>
+    <Canvas x:Name="_canvas" HorizontalAlignment="Center" VerticalAlignment="Center"></Canvas>
+  </DockPanel>
+</UserControl>

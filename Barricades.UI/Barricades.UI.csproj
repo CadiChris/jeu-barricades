@@ -60,6 +60,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CouleursUI.cs" />
+    <Compile Include="De.cs" />
+    <Compile Include="SelectionControl.xaml.cs">
+      <DependentUpon>SelectionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectionUI.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -74,6 +78,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PlateauUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
