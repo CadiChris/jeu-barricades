@@ -14,19 +14,30 @@ namespace Barricades.UI
   public partial class PlateauUI : UserControl
   {
     public Plateau Plateau { get; }
-    private readonly Window _selection;
+    private Window _selection;
 
     public PlateauUI()
     {
       InitializeComponent();
-      _selection = new  Window() {Width = 150, Height = 150 };
-      _selection.Show();
+      AfficherFenetreDeSelection();
 
       Plateau = new Plateau();
       var gps = new Gps(Plateau[P("1,1")]);
       var trajets = gps.TrajetsPour(3);
       Plateau.Deplacer(trajets.ToList()[1]);
       Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(DessinerLePlateau));
+    }
+
+    private void AfficherFenetreDeSelection()
+    {
+      _selection = new Window()
+      {
+        Width = 150,
+        Height = 150,
+        Title = "Barricades ! - Sélection",
+        ResizeMode = ResizeMode.NoResize,
+      };
+      _selection.Show();
     }
 
     private void DessinerLePlateau()
@@ -42,8 +53,17 @@ namespace Barricades.UI
       ui.Background = (ImageBrush) Resources["ImageTrou"];
       DessinerPion(trou, ui);
       DessinerLesChemins(trou, ui);
+      AbonnerAuClic(trou, ui);
+    }
 
+    private void AbonnerAuClic(Trou trou, Canvas ui)
+    {
+      ui.MouseLeftButtonDown += (sender, args) => Selectionner(trou);
+    }
 
+    private void Selectionner(Trou selection)
+    {
+      _selection.Content = selection.EstVide ? null : new Ellipse {Fill = Couleurs[selection.Pion.Couleur], Width = 50, Height = 60};
     }
 
     private static void DessinerPion(Trou trou, Canvas ui)
@@ -77,7 +97,7 @@ namespace Barricades.UI
           X2 = maPosition.X + ui.ActualWidth / 2,
           Y2 = maPosition.Y + ui.ActualHeight / 2 + 15,
         };
-        _canvas.Children.Add(chemin);
+        _canvas.Children.Insert(0, chemin);
       }
     }
 

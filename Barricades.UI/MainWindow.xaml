@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barricades.UI"
         mc:Ignorable="d"
-        Title="Barricades ! -" Height="1035" Width="915" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Barricades ! - Plateau" Height="1035" Width="915" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
   <Window.Background>
     <ImageBrush ImageSource="Images/Bois.jpg" TileMode="Tile" Stretch="UniformToFill"/>
   </Window.Background>

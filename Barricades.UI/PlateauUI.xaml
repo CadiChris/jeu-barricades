@@ -18,28 +18,28 @@
         <Canvas Width="100" Name="_90"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Canvas Width="100" Name="_80"></Canvas>
-        <Canvas Width="100" Name="_81"></Canvas>
-        <Canvas Width="100" Name="_82"></Canvas>
-        <Canvas Width="100" Name="_83"></Canvas>
-        <Canvas Width="100" Name="_84"></Canvas>
-        <Canvas Width="100" Name="_85"></Canvas>
-        <Canvas Width="100" Name="_86"></Canvas>
-        <Canvas Width="100" Name="_87"></Canvas>
-        <Canvas Width="100" Name="_88"></Canvas>
+        <Canvas Width="100" Name="_80" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_81" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_82" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_83" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_84" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_85" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_86" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_87" Background="Transparent"></Canvas>
+        <Canvas Width="100" Name="_88" Background="Transparent"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Canvas Width="100" Name="_70"></Canvas>
-        <Canvas Width="100" Name="_71"></Canvas>
-        <Canvas Width="100" Name="_72"></Canvas>
-        <Canvas Width="100" Name="_73" Margin="0,0,100,0"></Canvas>
-        <Canvas Width="100" Name="_74"></Canvas>
-        <Canvas Width="100" Name="_75"></Canvas>
-        <Canvas Width="100" Name="_76"></Canvas>
-        <Canvas Width="100" Name="_77"></Canvas>
+        <Canvas Width="100" Name="_70"  Background="Transparent" ></Canvas>
+        <Canvas Width="100" Name="_71"  Background="Transparent" ></Canvas>
+        <Canvas Width="100" Name="_72"  Background="Transparent" ></Canvas>
+        <Canvas Width="100" Name="_73"  Background="Transparent"  Margin="0,0,100,0"></Canvas>
+        <Canvas Width="100" Name="_74"  Background="Transparent" ></Canvas>
+        <Canvas Width="100" Name="_75"  Background="Transparent" ></Canvas>
+        <Canvas Width="100" Name="_76"  Background="Transparent" ></Canvas>
+        <Canvas Width="100" Name="_77"  Background="Transparent" ></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Canvas Width="100" Name="_60"></Canvas>
+        <Canvas Width="100" Name="_60" Background="Transparent"></Canvas>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Canvas Width="100" Name="_50" Margin="50,0,0,0"></Canvas>
