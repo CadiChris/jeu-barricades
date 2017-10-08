@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Barricades.Domaine;
@@ -42,7 +42,7 @@ namespace Barricades.UI
 
     private void DessinerTrou(Trou trou, Canvas ui)
     {
-      ui.Background = (ImageBrush) Resources["ImageTrou"];
+      ui.Background = (ImageBrush)Resources["ImageTrou"];
       DessinerPion(trou, ui);
       DessinerLesChemins(trou, ui);
       AbonnerAuClic(trou, ui);
@@ -63,19 +63,51 @@ namespace Barricades.UI
         if (deplacement != null)
         {
           Plateau.Deplacer(deplacement);
-          DessinerPion(Plateau[deplacement.Depart], FindName($"_{deplacement.Depart.X}{deplacement.Depart.Y}") as Canvas);
-          DessinerPion(Plateau[deplacement.Arrivee], FindName($"_{deplacement.Arrivee.X}{deplacement.Arrivee.Y}") as Canvas);
+          DeplacerPion(deplacement);
           _selection.Effacer();
         }
       }
-      else 
+      else
         _selection.Selectionner(trou);
 
     }
 
-    private void Selectionner(Trou selection)
+    private void DeplacerPion(Trajet deplacement)
     {
-      _selection.Selectionner(selection);
+      var depart = FindName($"_{deplacement.Depart.X}{deplacement.Depart.Y}") as Canvas;
+      var arrivee = FindName($"_{deplacement.Arrivee.X}{deplacement.Arrivee.Y}") as Canvas;
+      var pointDeDepart = depart.TransformToAncestor(this).Transform(new Point(0, 0));
+      var pointArrivee = arrivee.TransformToAncestor(this).Transform(new Point(0, 0));
+
+      var pionQuiSeDeplace = EllipseDeCouleur(Plateau[deplacement.Arrivee].Pion.Couleur);
+      _canvas.Children.Add(pionQuiSeDeplace);
+      var animationX = new DoubleAnimation
+      {
+        From = pointDeDepart.X,
+        To = pointArrivee.X,
+        Duration = TimeSpan.FromSeconds(0.5)
+      };
+      var animationY = new DoubleAnimation
+      {
+        EasingFunction = new CircleEase {EasingMode = EasingMode.EaseOut},
+        From = pointDeDepart.Y,
+        To = pointArrivee.Y,
+        Duration = TimeSpan.FromSeconds(0.5)
+      };
+      Storyboard.SetTarget(animationX, pionQuiSeDeplace);
+      Storyboard.SetTarget(animationY, pionQuiSeDeplace);
+      Storyboard.SetTargetProperty(animationX, new PropertyPath(Canvas.LeftProperty));
+      Storyboard.SetTargetProperty(animationY, new PropertyPath(Canvas.TopProperty));
+      var sb = new Storyboard();
+      sb.Children.Add(animationX);
+      sb.Children.Add(animationY);
+      sb.Completed += (sender, args) =>
+      {
+        DessinerPion(Plateau[deplacement.Arrivee], FindName($"_{deplacement.Arrivee.X}{deplacement.Arrivee.Y}") as Canvas);
+        _canvas.Children.Remove(pionQuiSeDeplace);
+      };
+      sb.Begin();
+      DessinerPion(Plateau[deplacement.Depart], FindName($"_{deplacement.Depart.X}{deplacement.Depart.Y}") as Canvas);
     }
 
     private void DessinerPion(Trou trou, Canvas ui)
@@ -84,15 +116,21 @@ namespace Barricades.UI
         ui.Children.Clear();
       else
       {
-        ui.Children.Add(new Ellipse()
-        {
-          Margin = new Thickness(27, 25, 0, 0),
-          Width = 45,
-          Height = 50,
-          Fill = BrushDeCouleur(trou.Pion.Couleur)
-        });
-        ui.MouseLeftButtonUp += (sender, args) => Jouer(trou);
+        var pion = EllipseDeCouleur(trou.Pion.Couleur);
+        pion.MouseLeftButtonUp += (sender, args) => Jouer(trou);
+        ui.Children.Add(pion);
       }
+    }
+
+    private static Ellipse EllipseDeCouleur(Couleur couleur)
+    {
+      return new Ellipse()
+      {
+        Margin = new Thickness(27, 25, 0, 0),
+        Width = 45,
+        Height = 50,
+        Fill = BrushDeCouleur(couleur)
+      };
     }
 
     private void DessinerLesChemins(Trou trou, Canvas ui)
