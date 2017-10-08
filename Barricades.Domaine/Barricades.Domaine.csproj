@@ -47,6 +47,7 @@
     <Compile Include="Couleur.cs" />
     <Compile Include="Gps.cs" />
     <Compile Include="NomsDesCouleurs.cs" />
+    <Compile Include="Plateaux.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Trajet.cs" />
     <Compile Include="Trou.cs" />

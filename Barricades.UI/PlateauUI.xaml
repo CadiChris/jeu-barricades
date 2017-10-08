@@ -12,14 +12,6 @@
     <DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Button Width="100" Name="_90"></Button>
-        <Button Width="100" Name="_91"></Button>
-        <Button Width="100" Name="_92"></Button>
-        <Button Width="100" Name="_93"></Button>
-        <Button Width="100" Name="_94"></Button>
-        <Button Width="100" Name="_95"></Button>
-        <Button Width="100" Name="_96"></Button>
-        <Button Width="100" Name="_97"></Button>
-        <Button Width="100" Name="_98"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Button Width="100" Name="_80"></Button>
@@ -36,56 +28,40 @@
         <Button Width="100" Name="_70"></Button>
         <Button Width="100" Name="_71"></Button>
         <Button Width="100" Name="_72"></Button>
-        <Button Width="100" Name="_73"></Button>
+        <Button Width="100" Name="_73" Margin="0,0,100,0"></Button>
         <Button Width="100" Name="_74"></Button>
         <Button Width="100" Name="_75"></Button>
         <Button Width="100" Name="_76"></Button>
         <Button Width="100" Name="_77"></Button>
-        <Button Width="100" Name="_78"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Button Width="100" Name="_60"></Button>
-        <Button Width="100" Name="_61"></Button>
-        <Button Width="100" Name="_62"></Button>
-        <Button Width="100" Name="_63"></Button>
-        <Button Width="100" Name="_64"></Button>
-        <Button Width="100" Name="_65"></Button>
-        <Button Width="100" Name="_66"></Button>
-        <Button Width="100" Name="_67"></Button>
-        <Button Width="100" Name="_68"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_50"></Button>
-        <Button Width="100" Name="_51"></Button>
-        <Button Width="100" Name="_52"></Button>
-        <Button Width="100" Name="_53"></Button>
+        <Button Width="100" Name="_50" Margin="50,0,0,0"></Button>
+        <Button Width="100" Name="_51" Margin="100,0,0,0"></Button>
+        <Button Width="100" Name="_52" Margin="50,0,50,0"></Button>
+        <Button Width="100" Name="_53" Margin="0,0,50,0"></Button>
         <Button Width="100" Name="_54"></Button>
-        <Button Width="100" Name="_55"></Button>
-        <Button Width="100" Name="_56"></Button>
-        <Button Width="100" Name="_57"></Button>
-        <Button Width="100" Name="_58"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_40"></Button>
+        <Button Width="100" Name="_40" Margin="50,0,0,0"></Button>
         <Button Width="100" Name="_41"></Button>
         <Button Width="100" Name="_42"></Button>
         <Button Width="100" Name="_43"></Button>
         <Button Width="100" Name="_44"></Button>
         <Button Width="100" Name="_45"></Button>
         <Button Width="100" Name="_46"></Button>
-        <Button Width="100" Name="_47"></Button>
-        <Button Width="100" Name="_48"></Button>
+        <Button Width="100" Name="_47" Margin="0,0,50,0"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Button Width="100" Name="_30"></Button>
-        <Button Width="100" Name="_31"></Button>
+        <Button Width="100" Name="_31" Margin="100,0,0,0"></Button>
         <Button Width="100" Name="_32"></Button>
         <Button Width="100" Name="_33"></Button>
         <Button Width="100" Name="_34"></Button>
-        <Button Width="100" Name="_35"></Button>
+        <Button Width="100" Name="_35" Margin="0,0,100,0"></Button>
         <Button Width="100" Name="_36"></Button>
-        <Button Width="100" Name="_37"></Button>
-        <Button Width="100" Name="_38"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
         <Button Width="100" Name="_20"></Button>
@@ -99,26 +75,24 @@
         <Button Width="100" Name="_28"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_10" Margin="48,0,0,0"></Button>
+        <Button Width="100" Name="_10" Margin="50,0,0,0"></Button>
         <Button Width="100" Name="_11"></Button>
         <Button Width="100" Name="_12"></Button>
         <Button Width="100" Name="_13"></Button>
         <Button Width="100" Name="_14"></Button>
         <Button Width="100" Name="_15"></Button>
         <Button Width="100" Name="_16"></Button>
-        <Button Width="100" Name="_17"></Button>
-        <Button Width="0" Name="_18"></Button>
+        <Button Width="100" Name="_17" Margin="0,0,50,0"></Button>
       </DockPanel>
       <DockPanel DockPanel.Dock="Top" Height="100">
-        <Button Width="100" Name="_00" Margin="48,0,0,0"></Button>
+        <Button Width="100" Name="_00" Margin="50,0,0,0"></Button>
         <Button Width="100" Name="_01"></Button>
         <Button Width="100" Name="_02"></Button>
         <Button Width="100" Name="_03"></Button>
         <Button Width="100" Name="_04"></Button>
         <Button Width="100" Name="_05"></Button>
         <Button Width="100" Name="_06"></Button>
-        <Button Width="100" Name="_07"></Button>
-        <Button Width="0" Name="_08"></Button>
+        <Button Width="100" Name="_07" Margin="0,0,50,0"></Button>
       </DockPanel>
     </DockPanel>
   </Canvas>

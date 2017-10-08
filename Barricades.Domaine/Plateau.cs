@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using static System.Linq.Enumerable;
 using static Barricades.Domaine.Couleur;
 using static Barricades.Domaine.Position;
 
@@ -25,25 +24,8 @@ namespace Barricades.Domaine
 
     private void TrouerLePlateau()
     {
-      _trous = new Trou[10, 9];
+      _trous = Plateaux.PlateauClassique();
 
-      _trous[2,1] = new Trou(P("2,1"));
-      _trous[1, 0] = new Trou(P("1,0"), _trous[2, 1]);
-      _trous[1, 1] = new Trou(P("1,1"), _trous[2, 1]);
-
-      foreach (var y in Range(0, 9))
-        _trous[0, y] = new Trou(P($"0, {y}"));
-
-      foreach (var y in Range(2, 9-2))
-        _trous[1, y] = new Trou(P($"1, {y}"));
-
-      _trous[2,0] = new Trou(P("2,0"));
-      foreach (var y in Range(2, 9-2))
-        _trous[2, y] = new Trou(P($"2, {y}"));
-
-      foreach (var x in Range(3, 10-3))
-        foreach (var y in Range(0, 9))
-          _trous[x, y] = new Trou(P($"{x},{y}"));
     }
 
     private void PoserLesPions()

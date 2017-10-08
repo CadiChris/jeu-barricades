@@ -28,7 +28,8 @@ namespace Barricades.UI
     {
       for (var x = 0; x < 10; x++)
         for (var y = 0; y < 9; y++)
-          DessinerTrou(Plateau[P($"{x},{y}")], FindName($"_{x}{y}") as Button);
+          if (Plateau[P($"{x},{y}")] != null)
+            DessinerTrou(Plateau[P($"{x},{y}")], FindName($"_{x}{y}") as Button);
     }
 
     private void DessinerTrou(Trou trou, ContentControl ui)
@@ -36,7 +37,7 @@ namespace Barricades.UI
       ui.Background = (ImageBrush) Resources["ImageTrou"];
       if (!trou.EstVide)
       {
-        ui.Content = "<__>";
+        ui.Content = new Ellipse() {Width = 60, Height = 80, Fill = Couleurs[trou.Pion.Couleur]};
         ui.Foreground = Couleurs[trou.Pion.Couleur];
       }
       foreach (var successeur in trou.Successeurs)
