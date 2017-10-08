@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Barricades ! -" Height="1035" Width="915" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
   <Window.Background>
-    <ImageBrush ImageSource="Images/Bois.jpg" Stretch="UniformToFill" TileMode="FlipX"/>
+    <ImageBrush ImageSource="Images/Bois.jpg" TileMode="Tile" Stretch="UniformToFill"/>
   </Window.Background>
 
   <local:PlateauUI></local:PlateauUI>
