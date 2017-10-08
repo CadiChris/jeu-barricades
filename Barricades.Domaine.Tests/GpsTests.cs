@@ -64,5 +64,21 @@ namespace Barricades.Domaine.Tests
 
       AreEqual(new Pion(Bleu, P("0,2")),  trajets.Single().Prise);
     }
+
+    [TestMethod]
+    public void NeRebroussePasChemin()
+    {
+      var depart = 2.TrousQuiSeSuivent(0);
+      var _0_0 = depart;
+      var _0_1 = _0_0.Successeurs[0];
+      _0_1.Successeurs.Add(_0_0);
+
+
+      var gps = new Gps(depart);
+      var trajets = gps.TrajetsPour(2).ToList();
+
+      AreEqual(1, trajets.Count);
+      AreEqual(true, trajets.Single().EstBloque);
+    }
   }
 }
